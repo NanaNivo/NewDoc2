@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="2.5"
+    android:background="#FFFFF5"
+    tools:context=".FirstAct">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="2">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hap"
+        >
+
+    </ImageView>
+
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:background="#FFFFFD"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="20dp"
+            android:layout_weight="0.25"
+            android:background="@drawable/btnstyle"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Log In"
+            android:textSize="40dp"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/regester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="20dp"
+            android:layout_weight="0.25"
+            android:background="@drawable/btnstyle"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Regester"
+            android:textSize="40dp"
+            android:textStyle="bold"></Button>
+    </LinearLayout>
+
+
+</LinearLayout>

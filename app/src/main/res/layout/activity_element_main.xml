@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/ScrollView01"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF0EDED"
+tools:context=".ElementMain"
+    >
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="horizontal"
+
+    android:scrollbars="vertical"
+
+   >
+  <RelativeLayout
+
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+
+      android:id="@+id/rl"
+
+ >
+
+      <View
+          android:id="@+id/bg_top_header"
+          android:layout_width="match_parent"
+          android:layout_height="230dp"
+          android:background="@drawable/ic_bg_topheader"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    >
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp">
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_height="60dp"
+           android:layout_width="60dp"
+           android:elevation="1dp"
+           android:id="@+id/profil"
+          android:layout_marginTop="55dp"
+           android:src="@drawable/ic_photo_user"
+           android:layout_centerHorizontal="true"/>
+           <LinearLayout
+               android:layout_height="wrap_content"
+               android:layout_width="match_parent"
+
+               android:orientation="vertical"
+               >
+
+           <androidx.cardview.widget.CardView
+               android:layout_height="match_parent"
+               android:layout_width="match_parent"
+               android:layout_marginTop="85dp"
+                app:contentPaddingTop="15dp"
+               app:contentPaddingBottom="15dp"
+               app:contentPaddingLeft="15dp"
+               app:contentPaddingRight="15dp"
+
+               app:cardCornerRadius="10dp"
+               >
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="30dp"
+                       android:text="مهماتي"
+                       android:layout_gravity="center_horizontal"
+                       android:gravity="center"
+                       android:textSize="30dp"
+                       android:textStyle="bold"
+                       ></TextView>
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="25dp"
+                       android:text="احصل على السعادة والتفكير الإجابي"
+                       android:textColor="@color/colororang"
+                       android:textSize="25dp"
+                       android:gravity="center"
+                       android:textStyle="bold"
+                       ></TextView>
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp"
+                       android:text="لاحظ لوحة نشاط المسار المصممة أدناه لرفع مهاراتك و زيادة الرفاهية"
+                       android:textSize="20dp"
+                       android:gravity="center"
+                       android:textStyle="normal"
+                       ></TextView>
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp"
+                       android:text="النشاطات الأربع:"
+                       android:textSize="25dp"
+                       android:gravity="right"
+                       android:textColor="@color/colorAccent"
+                       android:paddingRight="20dp"
+
+                       android:textStyle="bold"
+                       ></TextView>
+                   <androidx.recyclerview.widget.RecyclerView
+                       android:id="@+id/my_recycler_view2"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+
+
+
+                       />
+
+               </LinearLayout>
+           </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+
+  </RelativeLayout>
+</LinearLayout>
+  </RelativeLayout>
+  <RelativeLayout
+
+
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+     android:paddingTop="10dp"
+      android:layout_below="@id/rl"
+      android:layout_marginLeft="15dp"
+      android:layout_marginRight="15dp"
+      >
+
+      <androidx.cardview.widget.CardView
+          android:layout_height="match_parent"
+          android:layout_width="match_parent"
+
+
+          app:cardCornerRadius="10dp"
+          >
+
+          <RelativeLayout
+
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+
+
+              android:background="@drawable/edit_text_background"
+              >
+
+  <!-- <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        />-->
+    <!--
+        SeekBar
+            A SeekBar is an extension of ProgressBar that adds a draggable thumb. The user can touch
+            the thumb and drag left or right to set the current progress level or use the arrow keys.
+            Placing focusable widgets to the left or right of a SeekBar is discouraged.
+
+            Clients of the SeekBar can attach a SeekBar.OnSeekBarChangeListener to be notified
+            of the user's actions.
+    -->
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/skill"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:text="مهاراتي"
+    android:textSize="30dp"
+    android:textStyle="bold"
+    >
+
+</TextView>
+
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:maxWidth="20dp"
+        android:maxHeight="32dp"
+        android:minWidth="20dp"
+        android:minHeight="32dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+       android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/skill"
+        android:progressTint="@color/colorpurple"
+        android:progressDrawable="@drawable/seekparbrogres"
+        android:splitTrack="false"
+        android:thumb="@drawable/seekbaethumb">
+    </SeekBar>
+
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/cake"
+     android:layout_alignBottom="@id/seekbar"
+        android:layout_alignTop="@id/seekbar"
+        android:layout_alignStart="@id/seekbar"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:src="@drawable/congrats_savor_big_shadow_icon">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/seekbar"
+        android:gravity="center"
+       android:layout_alignBottom="@id/seekbar"
+        android:layout_alignTop="@id/seekbar"
+        android:paddingEnd="20dp"
+        android:text="التذوق"
+        android:textStyle="bold" />
+
+
+
+  <SeekBar
+      android:id="@+id/seekbar2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/seekbar"
+      android:max="100"
+      android:maxWidth="20dp"
+      android:maxHeight="32dp"
+      android:minWidth="20dp"
+      android:minHeight="32dp"
+      android:paddingTop="30dp"
+      android:paddingBottom="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:progressTint="@color/colororangetoskil"
+      android:progressDrawable="@drawable/seekparbrogres"
+      android:splitTrack="false"
+      android:thumb="@drawable/seekthumb2">
+  </SeekBar>
+
+
+  <ImageView
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:id="@+id/thank"
+      android:layout_alignBottom="@id/seekbar2"
+      android:layout_alignTop="@id/seekbar2"
+      android:layout_alignStart="@id/seekbar2"
+
+      android:gravity="center"
+      android:paddingTop="10dp"
+      android:src="@drawable/congrats_thank_big_shadow_icon">
+
+  </ImageView>
+
+  <TextView
+      android:id="@+id/tv2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignEnd="@id/seekbar2"
+      android:gravity="center"
+      android:layout_alignBottom="@id/seekbar2"
+      android:layout_alignTop="@id/seekbar2"
+      android:paddingEnd="20dp"
+      android:text="الشكر"
+      android:textStyle="bold" />
+
+  <SeekBar
+      android:id="@+id/seekbar3"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/seekbar2"
+      android:max="100"
+      android:maxWidth="20dp"
+      android:maxHeight="32dp"
+      android:minWidth="20dp"
+      android:minHeight="32dp"
+      android:paddingTop="30dp"
+      android:paddingBottom="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:progressTint="@color/colorobluetoskil"
+      android:progressDrawable="@drawable/seekparbrogres"
+      android:splitTrack="false"
+      android:thumb="@drawable/seekthumb3">
+  </SeekBar>
+
+
+  <ImageView
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:id="@+id/aspir"
+      android:layout_alignBottom="@id/seekbar3"
+      android:layout_alignTop="@id/seekbar3"
+      android:layout_alignStart="@id/seekbar3"
+
+      android:gravity="center"
+      android:paddingTop="10dp"
+      android:src="@drawable/congrats_aspire_big_shadow_icon">
+
+  </ImageView>
+
+  <TextView
+      android:id="@+id/tv3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignEnd="@id/seekbar3"
+      android:gravity="center"
+      android:layout_alignBottom="@id/seekbar3"
+      android:layout_alignTop="@id/seekbar3"
+      android:paddingEnd="20dp"
+      android:text="الطموح"
+      android:textStyle="bold" />
+
+
+  <SeekBar
+      android:id="@+id/seekbar4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/seekbar3"
+      android:max="100"
+      android:maxWidth="20dp"
+      android:maxHeight="32dp"
+      android:minWidth="20dp"
+      android:minHeight="32dp"
+      android:paddingTop="30dp"
+      android:paddingBottom="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:progressTint="@color/colorogreentoskil"
+      android:progressDrawable="@drawable/seekparbrogres"
+      android:splitTrack="false"
+      android:thumb="@drawable/seekthumb4">
+  </SeekBar>
+
+
+  <ImageView
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:id="@+id/give"
+      android:layout_alignBottom="@id/seekbar4"
+      android:layout_alignTop="@id/seekbar4"
+      android:layout_alignStart="@id/seekbar4"
+
+      android:gravity="center"
+      android:paddingTop="10dp"
+      android:src="@drawable/congrats_give_big_shadow_icon">
+
+  </ImageView>
+
+  <TextView
+      android:id="@+id/tv4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignEnd="@id/seekbar4"
+      android:gravity="center"
+      android:layout_alignBottom="@id/seekbar4"
+      android:layout_alignTop="@id/seekbar4"
+      android:paddingEnd="20dp"
+      android:text="العطاء"
+      android:textStyle="bold" />
+
+  <SeekBar
+      android:id="@+id/seekbar5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/seekbar4"
+      android:max="100"
+      android:maxWidth="20dp"
+      android:maxHeight="32dp"
+      android:minWidth="20dp"
+      android:minHeight="32dp"
+      android:paddingTop="30dp"
+      android:paddingBottom="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:progressTint="@color/colorredtoskil"
+      android:progressDrawable="@drawable/seekparbrogres"
+      android:splitTrack="false"
+      android:thumb="@drawable/seekthumb5">
+  </SeekBar>
+
+
+  <ImageView
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:id="@+id/empath"
+      android:layout_alignBottom="@id/seekbar5"
+      android:layout_alignTop="@id/seekbar5"
+      android:layout_alignStart="@id/seekbar5"
+
+      android:gravity="start"
+      android:paddingTop="10dp"
+      android:src="@drawable/congrats_empathize_big_shadow_icon">
+
+  </ImageView>
+
+  <TextView
+      android:id="@+id/tv5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignEnd="@id/seekbar5"
+      android:gravity="center"
+      android:layout_alignBottom="@id/seekbar5"
+      android:layout_alignTop="@id/seekbar5"
+      android:paddingEnd="20dp"
+      android:text="التعاطف"
+      android:textStyle="bold" />
+          </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+</RelativeLayout>
+
+</RelativeLayout>
+</ScrollView>
