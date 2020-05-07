@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ElementMain"></activity>
+
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ElementMain" />
         <activity android:name=".VidioPage" />
         <activity android:name=".VedioShow" />
         <activity android:name=".FirstAct" />

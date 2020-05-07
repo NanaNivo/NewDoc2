@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ElementMain">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_home"
+            android:icon="@drawable/ic_home_24px"
+            android:title="الصفحة الرئيسية"/>
+        <item
+            android:id="@+id/navigation_profil"
+            android:icon="@drawable/ic_username"
+            android:title="الصفحة الشخصية"/>
+
+        <item
+            android:id="@+id/navigation_log_out"
+            android:icon="@drawable/ic_exit_to_app_24px"
+            android:title="تسجيل الخروج"/>
+       <!-- <item
+            android:id="@+id/navigation_subheader"
+            android:title="Tutorials">
+            <menu>
+                <item
+                    android:id="@+id/navigation_sub_item_1"
+                    android:icon="@drawable/ic_image_looks_one"
+                    android:title="Android Tutorials"/>
+                <item
+                    android:id="@+id/navigation_sub_item_2"
+                    android:icon="@drawable/ic_image_looks_two"
+                    android:title="IOS Tutorials"/>
+            </menu>
+        </item>-->
+    </group>
+</menu>

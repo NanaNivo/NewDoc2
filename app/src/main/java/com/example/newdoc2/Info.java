@@ -25,7 +25,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
     int numqQues=1;
     myDbAdapter  dbb;
     String[] temp;
-   // String ans[]={"aaa","sss","qqqq"};
+    // String ans[]={"aaa","sss","qqqq"};
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,11 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
         quesInfo = (TextView) findViewById(R.id.quesInfo);
         len = (LinearLayout) findViewById(R.id.InfoLin);
 
-       dbb = new myDbAdapter(this);
+        dbb = new myDbAdapter(this);
         temp = dbb.getQuesFroInfo(numqQues);
         // db.insertData("وجدت صعوبة في الهدوء و الراحة",2);
         quesInfo.setText(temp[0]);
-       String number= temp[1];
+        String number= temp[1];
         addRadioButtons(Integer.parseInt(number));
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-       // Log.d(TAG, " Name " + ((RadioButton)v).getText() +" Id is "+v.getId());
+        // Log.d(TAG, " Name " + ((RadioButton)v).getText() +" Id is "+v.getId());
         dbb.updateAnsToInfo(numqQues, (String) ((RadioButton)v).getText());
 
     }

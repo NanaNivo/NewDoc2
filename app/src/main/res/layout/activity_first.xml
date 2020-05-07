@@ -1,65 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_weight="2.5"
-    android:background="#FFFFF5"
-    tools:context=".FirstAct">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_weight="2">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/hap"
-        >
-
-    </ImageView>
-
-
-
-</LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:background="#FFFFFD"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="20dp"
-            android:layout_weight="0.25"
-            android:background="@drawable/btnstyle"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Log In"
-            android:textSize="40dp"
-            android:textStyle="bold"></Button>
-
-        <Button
-            android:id="@+id/regester"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="20dp"
-            android:layout_weight="0.25"
-            android:background="@drawable/btnstyle"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Regester"
-            android:textSize="40dp"
-            android:textStyle="bold"></Button>
-    </LinearLayout>
-
-
-</LinearLayout>
+<?xml version="1.0" encoding="UTF-8"?>    <LinearLayout tools:context=".FirstAct" android:background="#FFFFF5" android:layout_weight="2.5" android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">    <LinearLayout android:layout_weight="2" android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent">    <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/hap"> </ImageView></LinearLayout>    <LinearLayout android:background="#FFFFFD" android:layout_weight="0.5" android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent">    <Button android:background="@drawable/btnstyle" android:layout_weight="0.25" android:layout_height="wrap_content" android:layout_width="match_parent" android:textStyle="bold" android:textSize="40dp" android:text="Log In" android:padding="10dp" android:gravity="center" android:layout_margin="20dp" android:layout_gravity="bottom" android:id="@+id/login"/>    <Button android:background="@drawable/btnstyle" android:layout_weight="0.25" android:layout_height="wrap_content" android:layout_width="match_parent" android:textStyle="bold" android:textSize="40dp" android:text="Regester" android:padding="10dp" android:gravity="center" android:layout_margin="20dp" android:layout_gravity="bottom" android:id="@+id/regester"/></LinearLayout></LinearLayout>

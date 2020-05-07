@@ -39,8 +39,8 @@ public class login extends AppCompatActivity {
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
-                 //   userLogin(email, password);
-                   boolean check= db.checFromReg(email,password);
+                    //   userLogin(email, password);
+                    boolean check= db.checFromReg(email,password);
                     if(check)
                     {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

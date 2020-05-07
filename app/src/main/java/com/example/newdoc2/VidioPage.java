@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.flatdialoglibrary.dialog.FlatDialog;
+//import com.example.flatdialoglibrary.dialog.FlatDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +133,7 @@ public class VidioPage extends AppCompatActivity {
             path=osvedio[ selectedItemId];
             benfit=db.getBenFroVed(selectedName);
 
-            final FlatDialog flatDialog = new FlatDialog(VidioPage.this);
+           /* final FlatDialog flatDialog = new FlatDialog(VidioPage.this);
             flatDialog.setTitle("Benfit")
                     .setBackgroundColor(context.getResources().getColor(R.color.colorwight))
                     .setSubtitle( benfit)
@@ -157,7 +157,7 @@ public class VidioPage extends AppCompatActivity {
                             flatDialog.dismiss();
                         }
                     })
-                    .show();
+                    .show();*/
             // Send intent to SingleViewActivity
          /*  Intent ii = new Intent(this.context, VedioShow.class);
             // Pass image index

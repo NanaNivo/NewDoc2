@@ -1,12 +1,26 @@
 package com.example.newdoc2;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,26 +28,36 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.flatdialoglibrary.dialog.FlatDialog;
+//import com.example.flatdialoglibrary.dialog.FlatDialog;
+
+
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.navigation.NavigationView;
+import com.mindorks.placeholderview.PlaceHolderView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.R.color.colororangetoskil;
 
 //import com.bernaferrari.emojislider.EmojiSlider;
 
-public class ElementMain extends AppCompatActivity {
+public class ElementMain extends AppCompatActivity implements    NavigationView.OnNavigationItemSelectedListener {
 
     private Context mContext;
 
@@ -42,7 +66,7 @@ public class ElementMain extends AppCompatActivity {
     public static String[] osImages;
     private SeekBar mSeekBar,mSeekBar2,mSeekBar3,mSeekBar4,mSeekBar5;
     public View mTextView;
-            TextView mTextViewtxt;
+            TextView mTextViewtxt,txt_toolbar;
 
 
     private static RecyclerView.Adapter adapter;
@@ -50,6 +74,23 @@ public class ElementMain extends AppCompatActivity {
     private static RecyclerView recyclerView;
     static View.OnClickListener myOnClickListener;
     static String yourFilePath ;
+
+
+   /* private PlaceHolderView mDrawerView;
+
+    private PlaceHolderView mGalleryView;*/
+
+    private NavigationView mDrawer;
+    private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
+    private  ActionBarDrawerToggle drawerToggle;
+    private int mSelectedId;
+
+
+
+
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,6 +101,13 @@ public class ElementMain extends AppCompatActivity {
         setContentView(R.layout.activity_element_main);
 
 
+
+
+
+
+
+
+
         // Get the application context
         mContext = getApplicationContext();
 
@@ -67,6 +115,50 @@ public class ElementMain extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(
                 new ColorDrawable(Color.parseColor("#FF738CCA"))
         );
+
+        //to navegation
+        setToolbar();
+        initView();
+
+        drawerToggle=new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.open_drawer,R.string.close_drawer);
+        mDrawerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        //default it set first item as selected
+        mSelectedId=savedInstanceState ==null ? R.id.navigation_home: savedInstanceState.getInt("SELECTED_ID");
+
+
+
+// implement setNavigationSelectedListener event
+        mDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+// add code here what you need on click of items.
+                Toast.makeText(getApplicationContext(), "menuItem" + menuItem, Toast.LENGTH_LONG).show();
+
+                int itemId = menuItem.getItemId();
+
+
+               if(itemId==R.id.navigation_home) {
+
+
+                   Intent intent = new Intent(getApplicationContext(), ElementMain.class);
+                   startActivity(intent);
+                   txt_toolbar.setText("الصفحة الرئيسية");
+               }
+                if(itemId==R.id.navigation_profil) {
+
+                    Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                    startActivity(intent);
+                    txt_toolbar.setText("الصفحة الشخصية");
+                }
+               // mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                return false;
+            }
+        });
+     //   itemSelection(mSelectedId);
+
 
 
         mTextView = LayoutInflater.from(this).inflate(R.layout.txtseekbar, null, false);
@@ -85,7 +177,7 @@ public class ElementMain extends AppCompatActivity {
         mSeekBar4.setProgress(16);
         mSeekBar5.setProgress(16);
         mSeekBar.setThumb(getThumb(1,R.drawable.seekbaethumb,R.color.colorpurple));
-        mSeekBar2.setThumb(getThumb(1,R.drawable.seekthumb2,R.color.colororangetoskil));
+        mSeekBar2.setThumb(getThumb(1,R.drawable.seekthumb2, colororangetoskil));
         mSeekBar3.setThumb(getThumb(1,R.drawable.seekthumb3,R.color.colorobluetoskil));
         mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4,R.color.colorogreentoskil));
         mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5,R.color.colorredtoskil));
@@ -106,6 +198,8 @@ public class ElementMain extends AppCompatActivity {
         osImages[3]=yourFilePath+"food.jpg";
         adapter = new CustomAdapter(this, osNameList, osImages,R.layout.item_element_main,false);
         recyclerView.setAdapter(adapter);
+
+
 
 
 
@@ -148,10 +242,46 @@ public class ElementMain extends AppCompatActivity {
             }
 
         });
+        mSeekBar2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+
+            }
+
+        });
+        mSeekBar3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+
+            }
+
+        });
+        mSeekBar4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+
+            }
+
+        });
+        mSeekBar5.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+
+            }
+
+        });
 
 
     }
 
+
+
+
+    //to add number to thumb seekbar
     public Drawable getThumb(int progress,int ba,int coler) {
         ((TextView) mTextView.findViewById(R.id.tvProgress)).setText("" + progress);
         mTextView.setBackgroundResource(ba);
@@ -208,6 +338,100 @@ public class ElementMain extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
+
+  /*  private void setupDrawer(){
+        mDrawerView
+                .addView(new DrawerHeader())
+                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_PROFILE))
+                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_Home))
+                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_LOGOUT));
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open_drawer, R.string.close_drawer){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+
+        mDrawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+    }*/
+
+//all fun to nivagation
+    @SuppressLint("WrongViewCast")
+    private void setToolbar() {
+        mToolbar= (Toolbar) findViewById(R.id.toolbar);
+       txt_toolbar= (TextView) findViewById(R.id.Txt_toolbar);
+        if (mToolbar != null) {
+         //  setSupportActionBar(mToolbar);
+        }
+    }
+
+    private void initView() {
+        mDrawer= (NavigationView) findViewById(R.id.main_drawer);
+        mDrawer.setNavigationItemSelectedListener(this);
+        mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+
+    }
+
+    private void itemSelection(int mSelectedId) {
+
+        switch(mSelectedId){
+
+            case R.id.navigation_home:
+
+               mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                break;
+
+            case R.id.navigation_profil:
+               mDrawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.navigation_log_out:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+
+        }
+
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        menuItem.setChecked(true);
+        mSelectedId=menuItem.getItemId();
+        itemSelection(mSelectedId);
+
+
+        return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        //save selected item so it will remains same even after orientation change
+        outState.putInt("SELECTED_ID",mSelectedId);
+    }
+
+
+
 
 }
 

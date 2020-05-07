@@ -3,7 +3,7 @@ package com.example.newdoc2;
 public class listitem {
     String title;
     String img;
-   String namVedio;
+    String namVedio;
     public listitem() {
 
     }

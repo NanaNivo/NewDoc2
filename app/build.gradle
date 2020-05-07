@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.newdoc2"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -23,6 +23,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -33,13 +39,15 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.4'
+    //  implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.4'
     //  implementation 'com.android.support:gridlayout-v7:28.0.0'
     // implementation 'com.android.support:gridlayout-v7:28.0.0'
     // implementation 'com.android.support:cardview-v7:28.0.0'
     // implementation 'com.android.support:appcompat-v7:28.0.0'
     // implementation 'com.android.support:recyclerview-v7:28.0.0'
     //  //implementation 'com.android.support:cardview-v7:28.0.0'
-   // implementation 'com.bernaferrari.emojislider:emojislider:0.3'
+    // implementation 'com.bernaferrari.emojislider:emojislider:0.3'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.mindorks:placeholderview:0.2.7'
+
 }

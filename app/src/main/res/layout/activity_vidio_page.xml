@@ -1,47 +1,29 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:androidx.recyclerview="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0"?>
+
+    <RelativeLayout
+    tools:context=".VedioShow"
     android:orientation="vertical"
-    tools:context=".VedioShow">
+    xmlns:androidx.recyclerview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/texts"
+    <TextView android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="فيديوهات تمارين الإسترخاء"
-        android:textSize="25dp"
-        android:layout_weight="1"
-       android:gravity="center"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:background="@color/colorAccent"
         android:padding="48dp"
+        android:background="@color/colorAccent"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="25dp"
+        android:text="فيديوهات تمارين الإسترخاء"
+        android:id="@+id/texts"/>
 
-     />
+    <androidx.recyclerview.widget.RecyclerView android:layout_height="match_parent" android:layout_width="match_parent" android:layout_weight="3.5" android:id="@+id/my_recycler_view" android:layout_below="@id/texts" android:scrollbars="vertical"/>
+
+    <!--<ListViewandroid:id="@+id/customgrid"android:layout_width="match_parent"android:layout_height="0dp"android:layout_weight="3.5"android:stretchMode="columnWidth"/> -->
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:layout_weight="3.5"
-        android:layout_below="@id/texts"
-      />
-
-
-
-    <!--
-            <ListView
-                android:id="@+id/customgrid"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.5"
-                android:stretchMode="columnWidth"
-
-                />
-    -->
-
-    </RelativeLayout>
+</RelativeLayout>

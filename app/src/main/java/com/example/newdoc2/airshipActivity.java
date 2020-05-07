@@ -354,8 +354,23 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 }
             });
         }
+        else
+        {
+            customDialog.showDialogg(this,"حظ أوفر",null,"حسناً");
+            customDialog.ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //done what do you want to do
+                    Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                    startActivity(intent);
+                    customDialog.alertDialog.dismiss();
+                }
+            });
+        }
+        }
 
-    }
+
+
 
     private void updateDisplay() {
         mScoreDisplay.setText(String.valueOf(mScore));

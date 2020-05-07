@@ -1,83 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/colorAccent"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:textColor="@android:color/white"
-            android:text="Welcome to Be Happy App"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginTop="20dp"
-            android:textColor="@android:color/white"
-            android:text="Sign in to your account to open Be happy app "/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center"
-        android:layout_marginTop="15dp">
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittext"
-            android:drawableLeft="@drawable/ic_username"
-            android:drawablePadding="1dp"
-            android:hint="Username"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittext"
-            android:drawableLeft="@drawable/ic_security_black_24dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark" />
+    <LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@drawable/btnstyle"
-            android:text="Login"
-            android:textColor="@android:color/white" />
+    <LinearLayout android:orientation="vertical" android:background="@color/colorAccent" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="20dp" android:layout_gravity="center">
 
-    </LinearLayout>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Welcome to Be Happy App" android:textColor="@android:color/white" android:textSize="40sp"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Sign in to your account to open Be happy app " android:textColor="@android:color/white" android:textSize="15sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="20dp" android:layout_gravity="center" android:layout_marginTop="15dp" android:gravity="center">
+
+    <EditText android:background="@drawable/edittext" android:layout_height="wrap_content" android:layout_width="fill_parent" android:padding="10dp" android:textColor="@color/colorPrimaryDark" android:textColorHint="@color/colorPrimaryDark" android:singleLine="true" android:inputType="text" android:hint="Username" android:drawablePadding="1dp" android:drawableLeft="@drawable/ic_username" android:layout_marginBottom="10dp" android:id="@+id/username"/>
+
+    <EditText android:background="@drawable/edittext" android:layout_height="wrap_content" android:layout_width="fill_parent" android:padding="10dp" android:textColor="@color/colorPrimaryDark" android:textColorHint="@color/colorPrimaryDark" android:singleLine="true" android:inputType="textPassword" android:hint="Password" android:drawableLeft="@drawable/ic_security_black_24dp" android:layout_marginBottom="10dp" android:id="@+id/password"/>
+
+    <Button android:background="@drawable/btnstyle" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Login" android:textColor="@android:color/white" android:layout_marginTop="20dip" android:id="@+id/btnLogin"/>
+
+</LinearLayout>
 
 </LinearLayout>
