@@ -1,5 +1,6 @@
 package com.example.newdoc2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
   Button submit;
   static int numQues=1;
   int verAswer=-1;
-
+Boolean isclicable2=false;
   int[]result;
   TextView ques;
   @Override
@@ -34,49 +35,68 @@ public class MainActivity extends AppCompatActivity {
     submit = (Button) findViewById(R.id.submitButton);
     ques = (TextView) findViewById(R.id.ques);
 
+
+
     String temp =db.getQues(numQues);
     ques.setText(temp+"؟");
     // db.insertData("وجدت صعوبة في الهدوء و الراحة",2);
+isclicable2=false;
+
+
 
     submit.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
 
-        if (ans2.isChecked()) {
-          selectedSuperStar = ans2.getText().toString();
-          verAswer = 1;
-        } else if (ans1.isChecked()) {
-          selectedSuperStar = ans1.getText().toString();
-          verAswer = 0;
-        } else if (ans4.isChecked()) {
-          selectedSuperStar = ans4.getText().toString();
-          verAswer = 3;
-        } else if (ans3.isChecked()) {
-          selectedSuperStar = ans3.getText().toString();
-          verAswer = 2;
-        }
-        Toast.makeText(getApplicationContext(), selectedSuperStar, Toast.LENGTH_LONG).show();
-        db.updateAns(numQues, verAswer);
-        //selectedPosition=-1;
-        if (numQues == 21)
-        {
-          result=db.getthesum();
-          String[] all=db.resultdiagnosis(result);
-          Toast.makeText(getApplicationContext(), "the result of stress"+all[0]+",,the result of anxiety,,,"+all[1]+"the result of depression"+all[2], Toast.LENGTH_LONG).show();
+          isclicable2=false;
+          if (ans2.isChecked()) {
+            selectedSuperStar = ans2.getText().toString();
+            verAswer = 1;
+            isclicable2=true;
+            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+          } else if (ans1.isChecked()) {
+            selectedSuperStar = ans1.getText().toString();
+            verAswer = 0;
+            isclicable2=true;
+            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
 
-        }
-        else {
-          numQues++;
-          System.out.println("numQues" + numQues);
-          String temp = db.getQues(numQues);
-          System.out.println("temp" + temp);
-          ques.setText(temp+"؟");
+          } else if (ans4.isChecked()) {
+            selectedSuperStar = ans4.getText().toString();
+            verAswer = 3;
+            isclicable2=true;
+            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+          } else if (ans3.isChecked()) {
+            selectedSuperStar = ans3.getText().toString();
+            verAswer = 2;
+            isclicable2=true;
+            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+          }
+        if (isclicable2) {
+            Toast.makeText(getApplicationContext(), selectedSuperStar, Toast.LENGTH_LONG).show();
+          db.updateAns(numQues, verAswer);
+          //selectedPosition=-1;
+          if (numQues == 21) {
+            result = db.getthesum();
+            String[] all = db.resultdiagnosis(result);
+            Toast.makeText(getApplicationContext(), "the result of stress" + all[0] + ",,the result of anxiety,,," + all[1] + "the result of depression" + all[2], Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(getApplicationContext(), Info.class);
+            startActivity(intent);
+          } else {
+            numQues++;
+            System.out.println("numQues" + numQues);
+            String temp = db.getQues(numQues);
+            System.out.println("temp" + temp);
+            ques.setText(temp + "؟");
 
 
+          }
+          group.clearCheck();
+          isclicable2=false;
         }
-        group.clearCheck();
       }
+
     });
   }
 

@@ -17,14 +17,14 @@
         <activity android:name=".ElementMain" />
         <activity android:name=".VidioPage" />
         <activity android:name=".VedioShow" />
-        <activity android:name=".FirstAct" />
+        <activity android:name=".Main2Activity" />
         <activity android:name=".Info" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Balloon" />
         <activity android:name=".airshipActivity" />
         <activity android:name=".login" />
         <activity android:name=".regester" />
-        <activity android:name=".Main2Activity">
+        <activity android:name=".FirstAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

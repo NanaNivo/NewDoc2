@@ -4,32 +4,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#D73DB9EC"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/ques"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
             android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@color/colorwight"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+    </ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioGroup
@@ -45,9 +55,10 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:outlineAmbientShadowColor="@color/colorAccent"
+                android:shadowColor="@color/colorAccent"
                 android:text="لا ينطبق علي بتاتا"
-                android:textColor="#302F2F"
-                android:textSize="20sp"
+                android:textColor="@color/colordarkligt"
+                android:textSize="18sp"
                 android:textStyle="normal|bold" />
 
             <RadioButton
@@ -58,8 +69,8 @@
                 android:layout_marginTop="30dp"
                 android:shadowColor="@color/colorAccent"
                 android:text="ينطبق علي بعض الوقت"
-                android:textColor="#302F2F"
-                android:textSize="20sp"
+                android:textColor="@color/colordarkligt"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RadioButton
@@ -71,8 +82,8 @@
                 android:checked="false"
                 android:shadowColor="@color/colorAccent"
                 android:text="ينطبق علي بدرجة ملحوظة"
-                android:textColor="#302F2F"
-                android:textSize="20sp"
+                android:textColor="@color/colordarkligt"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RadioButton
@@ -84,15 +95,21 @@
                 android:padding="10dp"
                 android:shadowColor="@color/colorAccent"
                 android:text="ينطبق علي كثيرا"
-                android:textColor="#302F2F"
-                android:textSize="20sp"
+                android:textColor="@color/colordarkligt"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
 
         </RadioGroup>
-
-
-
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
         <Button
             android:id="@+id/submitButton"
             android:layout_width="match_parent"
