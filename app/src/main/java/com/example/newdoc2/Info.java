@@ -64,6 +64,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
                         Toast.makeText(Info.this, "ccc" + numqQues, Toast.LENGTH_SHORT).show();
                         temp = db.getQuesFroInfo(numqQues);
                         // db.insertData("وجدت صعوبة في الهدوء و الراحة",2);
+
                         quesInfo.setText(temp[0]);
                         String number = temp[1];
                         addRadioButtons(Integer.parseInt(number));

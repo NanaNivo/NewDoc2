@@ -2,18 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/colorAccent"
         android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
@@ -34,18 +35,24 @@
     </ScrollView>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RadioGroup
             android:id="@+id/group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="15dp"
+           android:layout_marginBottom="0dp"
+            android:layout_marginRight="15dp"
+
+
             android:layout_weight="2">
 
             <RadioButton
@@ -53,21 +60,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:outlineAmbientShadowColor="@color/colorAccent"
                 android:shadowColor="@color/colorAccent"
                 android:text="لا ينطبق علي بتاتا"
                 android:textColor="@color/colordarkligt"
                 android:textSize="18sp"
-                android:textStyle="normal|bold" />
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/ans2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:shadowColor="@color/colorAccent"
+                android:outlineAmbientShadowColor="@color/colorAccent"
                 android:text="ينطبق علي بعض الوقت"
                 android:textColor="@color/colordarkligt"
                 android:textSize="18sp"
@@ -78,9 +86,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:checked="false"
                 android:shadowColor="@color/colorAccent"
+                android:outlineAmbientShadowColor="@color/colorAccent"
                 android:text="ينطبق علي بدرجة ملحوظة"
                 android:textColor="@color/colordarkligt"
                 android:textSize="18sp"
@@ -91,9 +100,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:padding="10dp"
                 android:shadowColor="@color/colorAccent"
+                android:outlineAmbientShadowColor="@color/colorAccent"
                 android:text="ينطبق علي كثيرا"
                 android:textColor="@color/colordarkligt"
                 android:textSize="18sp"
@@ -103,27 +113,32 @@
         </RadioGroup>
     </LinearLayout>
     </ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
-        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+
         android:orientation="vertical">
         <Button
             android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="30dp"
+            android:layout_margin="35dp"
             android:background="@drawable/btnstyle"
             android:gravity="center"
-            android:padding="10dp"
+android:padding="10dp"
             android:text="  التالي"
             android:textColor="@color/colorwight"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
-
+    </ScrollView>
 
 </LinearLayout>
