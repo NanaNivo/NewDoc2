@@ -43,6 +43,8 @@ public class Balloon extends TextView implements ValueAnimator.AnimatorUpdateLis
     public  String curpath,typeword,curword;
     public  int ballonform;
     int timer=0;
+    boolean istop=false;
+    boolean isdown=false;
     public Balloon(Context context) {
         super(context);
     }
@@ -118,12 +120,48 @@ public class Balloon extends TextView implements ValueAnimator.AnimatorUpdateLis
             p.moveTo(x, screenHeight);
             p.lineTo(x-200, screenHeight);
         }
+        else if(curpath.equals("totop"))
+        {
+          /*  x=x+200;
+            p.moveTo(x, screenHeight);
+            p.lineTo(x, screenHeight-400);*/
+            istop=true;
 
-        pathMeasure = new PathMeasure(p, true);
-        mAnimator = new ValueAnimator();
-        mAnimator = ValueAnimator.ofFloat(pathMeasure.getLength(),0f);
-        mAnimator.setDuration(duration);
-        mAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        }
+        else if(curpath.equals("todown"))
+        {
+          /*  x=x+200;
+            p.moveTo(x, screenHeight);
+            p.lineTo(x, screenHeight-400);*/
+            isdown=true;
+
+        }
+
+        if(istop)
+        {
+          //  pathMeasure = new PathMeasure(p, true);
+            mAnimator = new ValueAnimator();
+            mAnimator = ValueAnimator.ofFloat(screenHeight,screenHeight-400);
+            mAnimator.setDuration(1000);
+            mAnimator.setRepeatCount(0);
+        }
+        else  if(isdown)
+        {
+            //  pathMeasure = new PathMeasure(p, true);
+            mAnimator = new ValueAnimator();
+            mAnimator = ValueAnimator.ofFloat(screenHeight,screenHeight+400);
+            mAnimator.setDuration(1000);
+            mAnimator.setRepeatCount(0);
+        }
+        else
+        {
+            pathMeasure = new PathMeasure(p, true);
+            mAnimator = new ValueAnimator();
+            mAnimator = ValueAnimator.ofFloat(pathMeasure.getLength(),0f);
+            mAnimator.setDuration(duration);
+            mAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        }
+
         //  mAnimator.setFloatValues(screenHeight, 0f);
         // mAnimator.setFrameDelay(5000000);
         mAnimator.setInterpolator(new LinearInterpolator());
@@ -146,12 +184,18 @@ public class Balloon extends TextView implements ValueAnimator.AnimatorUpdateLis
     @Override
     public void onAnimationUpdate(@NonNull ValueAnimator valueAnimator) {
 
-        float distance = (float) valueAnimator.getAnimatedValue();
-        pathMeasure.getPosTan(distance, coordinates, null);
-        this.setTranslationX(coordinates[0]);
-        this.setTranslationY(coordinates[1]);
-        postInvalidate();
-
+        if(istop||isdown)
+        {
+            float distance = (float) valueAnimator.getAnimatedValue();
+            this.setTranslationY(distance);
+        }
+      else {
+            float distance = (float) valueAnimator.getAnimatedValue();
+            pathMeasure.getPosTan(distance, coordinates, null);
+            this.setTranslationX(coordinates[0]);
+            this.setTranslationY(coordinates[1]);
+            postInvalidate();
+        }
         //System.out.println("xxxxxxxxxx"+valueAnimator.getAnimatedValue());
         if(timer==1)
         {
@@ -228,10 +272,12 @@ public class Balloon extends TextView implements ValueAnimator.AnimatorUpdateLis
      * This method is called when animation is finished. If user failed to pop balloon, balloon is popped mannualy and user
      * lose one life or lose the game depends on number of life that he has.
      */
+  // Boolean istopfinish=false;
     @Override
     public void onAnimationEnd(Animator animator) {
         // if (!mPopped)
         mListener.popBalloon(this, true);
+
 
     }
 

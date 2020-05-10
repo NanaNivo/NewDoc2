@@ -233,53 +233,107 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
 
     int carrntcreatballon;
-
+    float widh,high,highjumb;
+    String curpath;
+    int balform;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void jumpBalloon(Balloon balloon, boolean userTouch) {
 
-        float widh=  balloon.getX()-mScreenWidth;
-        float high=  balloon.getY();
-        String curpath=balloon.curpath;
-        int balform=balloon.ballonform;
+         widh=  balloon.getX()-mScreenWidth;
+         high=  balloon.getY();
+         float tranX=balloon.getTranslationX();
+        curpath=balloon.curpath;
+         balform=balloon.ballonform;
+       String typword1=balloon.typeword;
         db.iswordclick(balloon.curword);
         appearwords.remove(balloon.curword);
         Toast.makeText(this, "appearwords"+appearwords.size(), Toast.LENGTH_LONG).show();
-        float highjumb = high+balloon.curunthigh;
+         highjumb = high+balloon.curunthigh;
         if ((highjumb > 0) && (highjumb < mScreenHeight-400)) {
             popBalloon(balloon, true);
 
-            // Toast.makeText(this, balloon.getX()+"+"+balloon.getY()+"old", Toast.LENGTH_LONG).show();
-            if (!db.isclickallword())
+            if(typword1.equals("positive"))
             {
-                while (currword.size() == 0) {
+                Balloon bb = launchBalloon(widh+200,high, "+20", " ", balform, "totop", false);
 
-                    currword = db.getinfoFroairship(mNextword);
-
-
-                }
-
-                appearwords.add(currword.get(0));
-                Balloon bb = launchBalloon(widh, highjumb, currword.get(0), currword.get(1), balform, curpath, false);
-                currword = new ArrayList<>();
-                // Toast.makeText(this, balloon.curunthigh+"curunthigh"+balloon.getX(), Toast.LENGTH_LONG).show();
 
 
             }
-            else
+            else  if(typword1.equals("negative"))
             {
-                Toast.makeText(this, "finished word", Toast.LENGTH_LONG).show();
-                if(appearwords.isEmpty())
-                {
-                    gameend();
-                }
+                Balloon bb = launchBalloon(widh+200,high, "-20", " ", balform, "todown", false);
+
+
+
             }
+
+            //time to finish bb moving
+                new CountDownTimer(1000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        // mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+
+                        // timer=true;
+                        // Toast.makeText(this, balloon.getX()+"+"+balloon.getY()+"old", Toast.LENGTH_LONG).show();
+                        if (!db.isclickallword())
+                        {
+                            while (currword.size() == 0) {
+
+                                currword = db.getinfoFroairship(mNextword);
+
+
+                            }
+
+                            appearwords.add(currword.get(0));
+                            Balloon bb = launchBalloon(widh, highjumb, currword.get(0), currword.get(1), balform, curpath, false);
+                            currword = new ArrayList<>();
+                            // Toast.makeText(this, balloon.curunthigh+"curunthigh"+balloon.getX(), Toast.LENGTH_LONG).show();
+
+
+                        }
+                        else
+                        {
+                            Toast.makeText(getBaseContext(), "finished word", Toast.LENGTH_LONG).show();
+                            if(appearwords.isEmpty())
+                            {
+                                gameend();
+                            }
+                        }
+
+                    }
+
+                }.start();
+
+
+
+
+
         }
         else {
 
             mSoundHelper.playSound();
             mBalloonsPopped++;
             popBalloon(balloon, true);
+
+
+            if(typword1.equals("positive"))
+            {
+                Balloon bb = launchBalloon(widh+200,high, "+20", " ", balform, "totop", false);
+
+
+
+            }
+            else  if(typword1.equals("negative"))
+            {
+                Balloon bb = launchBalloon(widh+200,high, "-20", " ", balform, "todown", false);
+
+
+
+            }
 
             int d= BALLOONS_PER_Round+carrntcreatballon;
             Toast.makeText(this, "ok"+d, Toast.LENGTH_LONG).show();
