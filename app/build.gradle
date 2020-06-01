@@ -49,5 +49,6 @@ dependencies {
     // implementation 'com.bernaferrari.emojislider:emojislider:0.3'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.mindorks:placeholderview:0.2.7'
+    implementation 'com.joooonho:selectableroundedimageview:1.0.1'
 
 }

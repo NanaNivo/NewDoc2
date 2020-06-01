@@ -39,7 +39,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
     private static final int MIN_ANIMATION_DURATION = 1000;
     private static final int MAX_ANIMATION_DURATION = 20000;
     private static  int BALLOONS_PER_LEVEL = 3;
-    private static  int BALLOONS_PER_Round= 3;
+    private static  int BALLOONS_PER_Round= 2;
     private static final String TAG ="nnnn" ;
     public  float starthight = 0;
 
@@ -128,6 +128,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 startGame();
                 System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                 customDialog.alertDialog.dismiss();
+                customDialog.dialogShown=false;
             }
         });
     }
@@ -163,14 +164,15 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
         }*/
 
         mGameStopped = false;
-        Toast.makeText(this, "end the game"+starthight, Toast.LENGTH_SHORT).show();
         startLevel();
         mSoundHelper.playMusic();
     }
 
     private void startLevel() {
         mLevel++;
+        BALLOONS_PER_Round++;
         updateDisplay();
+        Toast.makeText(this,"round"+BALLOONS_PER_Round, Toast.LENGTH_SHORT).show();
         BalloonLauncher balloonLauncher = new BalloonLauncher();
         balloonLauncher.execute(mLevel);
         mPlaying = true;
@@ -182,9 +184,11 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
     private void finishLevel() {
         if(mLevel<3) {
-            BALLOONS_PER_Round++;
+
+            mPlaying = false;
             int d = mLevel + 1;
-            customDialog.showDialogg(this, "إبدأ الجولة " + d, "إطلاق " + BALLOONS_PER_Round + " بالونات لفتح هذه الجولة", "إبدأ الآن");
+            int k=BALLOONS_PER_Round+1;
+            customDialog.showDialogg(this, "إبدأ الجولة " + d, "إطلاق " + k + " بالونات لفتح هذه الجولة", "إبدأ الآن");
             customDialog.ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -192,10 +196,11 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                     startLevel();
                     System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     customDialog.alertDialog.dismiss();
+                    customDialog.dialogShown=false;
                 }
             });
             // Toast.makeText(this, String.format("You finished level %d", mLevel), Toast.LENGTH_SHORT).show();
-            mPlaying = false;
+           // startLevel();
         }
         else
         {
@@ -233,13 +238,15 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
 
     int carrntcreatballon;
-    float widh,high,highjumb;
+   /* float widh,high,highjumb;
     String curpath;
-    int balform;
+    int balform;*/
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void jumpBalloon(Balloon balloon, boolean userTouch) {
-
+    final float widh,high,highjumb;
+    final String curpath;
+    final int balform;
          widh=  balloon.getX()-mScreenWidth;
          high=  balloon.getY();
          float tranX=balloon.getTranslationX();
@@ -405,6 +412,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                     Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
                     startActivity(intent);
                     customDialog.alertDialog.dismiss();
+                    customDialog.dialogShown=false;
                 }
             });
         }
@@ -418,6 +426,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                     Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
                     startActivity(intent);
                     customDialog.alertDialog.dismiss();
+                    customDialog.dialogShown=false;
                 }
             });
         }
@@ -435,7 +444,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
     @Override
     protected void onStop() {
         super.onStop();
-        gameend();
+     //  gameend();
     }
     public  boolean comblate=false;
 
@@ -459,7 +468,40 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void close(View view) {
+
+        for(int i=0;i<mBalloons.size();i++)
+        {
+            mBalloons.get(i).mAnimator.pause();
+
+            //mBalloons.get(i).stopAnimation();
+        }
+        mSoundHelper.pauseMusic();
+        Toast.makeText(this, "close the game", Toast.LENGTH_SHORT).show();
+
+
+
+        customDialog.showDialogg(this,"انتهاء اللعبة","سيتم الخروج من اللعبة","حسناً");
+        customDialog.ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //done what do you want to do
+                for (Balloon balloon : mBalloons) {
+                    mContentView.removeView(balloon);
+                    balloon.setPopped(true);
+                }
+
+                mBalloons.clear();
+                mPlaying = false;
+                mGameStopped = true;
+                Intent intent = new Intent(getApplicationContext(),ElementMain.class);
+                startActivity(intent);
+                customDialog.alertDialog.dismiss();
+                customDialog.dialogShown=false;
+
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -487,6 +529,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                 customDialog.alertDialog.dismiss();
                 clicablepause=false;
+                customDialog.dialogShown=false;
             }
         });
 
@@ -507,7 +550,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                     (MAX_ANIMATION_DELAY - ((level - 1) * 500)));
             int minDelay = maxDelay / 2;
 
-            int balloonsLaunched = 0;
+            int balloonsLaunched =0;
             while (mPlaying && balloonsLaunched < BALLOONS_PER_Round) {
                 if (clicablepause == false) {
 //              Get a random horizontal position for the next balloon
@@ -520,7 +563,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                     int t = xPosition - mScreenWidth;
                     System.out.println("mScreenWidth+xPosition" + t);
 //              Wait a random number of milliseconds before looping
-                    int delay = random.nextInt(minDelay + 5000) + minDelay;
+                    int delay = random.nextInt(minDelay ) + minDelay;
                     try {
                         Thread.sleep(delay);
                     } catch (InterruptedException e) {

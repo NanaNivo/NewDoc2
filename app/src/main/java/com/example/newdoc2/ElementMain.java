@@ -25,11 +25,17 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -87,7 +93,7 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
     private int mSelectedId;
 
 
-
+    static int devicehigh;
 
 
     @SuppressLint("ResourceAsColor")
@@ -101,7 +107,11 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         setContentView(R.layout.activity_element_main);
 
 
-
+        //to chang high dynamic
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        devicehigh = displaymetrics.widthPixels / 5;
 
 
 
@@ -112,9 +122,9 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         mContext = getApplicationContext();
 
         // Change the action bar color
-        getSupportActionBar().setBackgroundDrawable(
-                new ColorDrawable(Color.parseColor("#FF738CCA"))
-        );
+      /*  getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(Color.parseColor("#ff7a00"))
+        );*/
 
         //to navegation
         setToolbar();
@@ -176,11 +186,11 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         mSeekBar3.setProgress(16);
         mSeekBar4.setProgress(16);
         mSeekBar5.setProgress(16);
-        mSeekBar.setThumb(getThumb(1,R.drawable.seekbaethumb,R.color.colorpurple));
-        mSeekBar2.setThumb(getThumb(1,R.drawable.seekthumb2, colororangetoskil));
-        mSeekBar3.setThumb(getThumb(1,R.drawable.seekthumb3,R.color.colorobluetoskil));
-        mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4,R.color.colorogreentoskil));
-        mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5,R.color.colorredtoskil));
+        mSeekBar.setThumb(getThumb(1,R.drawable.seekbaethumb));
+        mSeekBar2.setThumb(getThumb(1,R.drawable.seekthumb2));
+        mSeekBar3.setThumb(getThumb(1,R.drawable.seekthumb3));
+        mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4));
+        mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5));
 
 
         myOnClickListener = new MyOnClickListener(this);
@@ -276,13 +286,14 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         });
 
 
+
     }
 
 
 
 
     //to add number to thumb seekbar
-    public Drawable getThumb(int progress,int ba,int coler) {
+    public Drawable getThumb(int progress,int ba) {
         ((TextView) mTextView.findViewById(R.id.tvProgress)).setText("" + progress);
         mTextView.setBackgroundResource(ba);
         mTextView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -293,6 +304,9 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
 
         return new BitmapDrawable(getResources(), bitmap);
     }
+
+
+
 
 
     private class MyOnClickListener implements View.OnClickListener {
@@ -344,28 +358,7 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
 
 
 
-  /*  private void setupDrawer(){
-        mDrawerView
-                .addView(new DrawerHeader())
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_PROFILE))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_Home))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_LOGOUT));
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open_drawer, R.string.close_drawer){
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-        };
-
-        mDrawer.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-
-    }*/
 
 //all fun to nivagation
     @SuppressLint("WrongViewCast")
@@ -373,7 +366,8 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         mToolbar= (Toolbar) findViewById(R.id.toolbar);
        txt_toolbar= (TextView) findViewById(R.id.Txt_toolbar);
         if (mToolbar != null) {
-         //  setSupportActionBar(mToolbar);
+         setSupportActionBar(mToolbar);
+            getSupportActionBar().setTitle(null);
         }
     }
 

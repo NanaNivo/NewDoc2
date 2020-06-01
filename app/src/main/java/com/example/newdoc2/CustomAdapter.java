@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import static com.example.newdoc2.ElementMain.devicehigh;
+
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
@@ -70,8 +74,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int listPosition) {
 
+
+        holder.imageViewIcon.getLayoutParams().height = devicehigh;
+
         TextView textViewName = holder.textViewName;
         ImageView imageView = holder.imageViewIcon;
+
+
 
         textViewName.setText(result[listPosition]);
         imageView.setImageBitmap(BitmapFactory.decodeFile(imageId[listPosition]));

@@ -13,11 +13,17 @@ public class FirstAct extends AppCompatActivity {
   Button logIn,reg;
   static myDbAdapter db;
   Boolean isFirstRun;
+
+  static String yourFilePath ;
+  static String  yourvideoPath ;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first);
     // happy = (TextView) findViewById(R.id.hap);
+
+    yourFilePath = this.getFilesDir() + "/" + "images" + "/";
+    yourvideoPath = this.getFilesDir() + "/" + "vedio" + "/";
     db=new myDbAdapter(this);
 
 

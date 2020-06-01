@@ -196,6 +196,7 @@ android:layout_height="match_parent"
                     app:cardCornerRadius="10dp"
                     >
 
+
                     <RelativeLayout
 
 
@@ -206,6 +207,8 @@ android:layout_height="match_parent"
 
                         android:background="@android:drawable/editbox_background_normal"
                         >
+
+
 
                         <!-- <TextView
                               android:id="@+id/tv"
@@ -229,6 +232,7 @@ android:layout_height="match_parent"
                             android:id="@+id/skill"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
+                            android:layout_gravity="center"
                             android:text="مهاراتي"
                             android:textSize="30dp"
                             android:textStyle="bold"
@@ -474,7 +478,10 @@ android:layout_height="match_parent"
                             android:paddingEnd="20dp"
                             android:text="التعاطف"
                             android:textStyle="bold" />
+
                     </RelativeLayout>
+
+
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
 
