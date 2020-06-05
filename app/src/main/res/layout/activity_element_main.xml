@@ -203,8 +203,7 @@ android:layout_height="match_parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
-
+                        android:id="@+id/page_seekbar"
                         android:background="@android:drawable/editbox_background_normal"
                         >
 
@@ -247,9 +246,10 @@ android:layout_height="match_parent"
                             android:layout_height="wrap_content"
                             android:max="100"
                             android:maxWidth="20dp"
+                           android:minHeight="32dp"
                             android:maxHeight="32dp"
                             android:minWidth="20dp"
-                            android:minHeight="32dp"
+
                             android:paddingTop="30dp"
                             android:paddingBottom="20dp"
                             android:layout_marginStart="20dp"

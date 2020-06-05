@@ -192,6 +192,10 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4));
         mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5));
 
+       //mSeekBar.setMinimumHeight(155);
+
+
+
 
         myOnClickListener = new MyOnClickListener(this);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view2);
@@ -347,7 +351,11 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
                 Intent intent = new Intent(getApplicationContext(), VidioPage.class);
                 startActivity(intent);
             }
-
+            else  if(selectedItemId == 2)
+            {
+                Intent intent = new Intent(getApplicationContext(), Chat_activity.class);
+                startActivity(intent);
+            }
 
         }
 

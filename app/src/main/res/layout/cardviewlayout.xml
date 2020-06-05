@@ -33,10 +33,10 @@
         app:sriv_border_color="#008fea"
         app:sriv_oval="true"
 
-        app:sriv_left_top_corner_radius="5dip"
-        app:sriv_right_top_corner_radius="5dip"
-        app:sriv_left_bottom_corner_radius="5dip"
-        app:sriv_right_bottom_corner_radius="5dip"
+        app:sriv_left_top_corner_radius="10dip"
+        app:sriv_right_top_corner_radius="10dip"
+        app:sriv_left_bottom_corner_radius="10dip"
+        app:sriv_right_bottom_corner_radius="10dip"
 
 android:scaleType="fitXY"
         />
@@ -59,7 +59,7 @@ android:scaleType="fitXY"
             android:shadowRadius="6"
 
             android:textColor="@color/colorwight"
-            android:textSize="30dp"
+            android:textSize="35dp"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         />

@@ -67,7 +67,7 @@ String []temp={"لا تستعجل الحب سيأتي وقت وتكتشفون أ
         DisplayMetrics displaymetrics = new DisplayMetrics();
         ((Activity) this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         //if you need three fix imageview in width
-         devicehigh = displaymetrics.widthPixels / 3;
+         devicehigh = displaymetrics.widthPixels / 2;
 
 
 

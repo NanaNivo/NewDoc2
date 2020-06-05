@@ -132,7 +132,7 @@ else {
 
 // we need to set width, height after calling show() method
       Window window = alertDialog.getWindow();
-      window.setLayout(screenWidth - (screenWidth / 9), screenHeight - (screenHeight / 3));
+      window.setLayout(screenWidth - (screenWidth / 9), screenHeight-(screenHeight/2));
       alertDialog.show();
       // return customDialog;
     }
@@ -146,19 +146,19 @@ else {
     //
     for (int i = 0; i < number; i++) {
       RadioButton rdbtn = new RadioButton(a);
-    rdbtn.setPadding(30, 30, 30, 30);
+    rdbtn.setPadding(30, -18, 30, 30);
       rdbtn.setId(View.generateViewId());
       rdbtn.setText(txt[i]);
       rdbtn.setTextColor(R.color.colorblack);
       rdbtn.setTextSize(18);
-      rdbtn.setTypeface(null, Typeface.ITALIC);
+      rdbtn.setTypeface(null, Typeface.NORMAL);
       rdbtn.setButtonDrawable(R.drawable.radio_bot_drw);
-     // rdbtn.setGravity(Gravity.START);
-//rdbtn.setTextAlignment(mud);
+      rdbtn.setGravity(Gravity.RIGHT);
+rdbtn.setTextAlignment(0);
 
 
         RadioGroup.LayoutParams params_soiled = new RadioGroup.LayoutParams(a, null);
-   //  params_soiled.setMargins(40, 10, 40, 10);
+    // params_soiled.setMargins(0, 0, 0, 30);
       rdbtn.setLayoutParams(params_soiled);
       groupben.addView(rdbtn);
     }
