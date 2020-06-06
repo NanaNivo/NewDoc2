@@ -113,7 +113,7 @@ else {
       title.setText(titlle);
       addRadioButtons(sizebenfet, contentt, a);
       ok.setText(but);
-
+System.out.println("sizebenfet"+sizebenfet);
 
       //sizeWindow
       DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -132,7 +132,7 @@ else {
 
 // we need to set width, height after calling show() method
       Window window = alertDialog.getWindow();
-      window.setLayout(screenWidth - (screenWidth / 9), screenHeight-(screenHeight/2));
+      window.setLayout(screenWidth - (screenWidth / 9), screenHeight-(screenHeight/3));
       alertDialog.show();
       // return customDialog;
     }

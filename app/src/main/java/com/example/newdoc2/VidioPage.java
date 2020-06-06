@@ -51,7 +51,7 @@ public class VidioPage extends AppCompatActivity {
     private static ArrayList<Integer> removedItems;
 
     myCustomDialog customDialog1;
-String []temp={"لا تستعجل الحب سيأتي وقت وتكتشفون أن هناك شخص استحق سنين الإنتظار","وخطو على قبري اذا متَّ قتيل لحاظ مات وهو عشيق"};
+ArrayList<String>temp=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,12 +145,18 @@ String []temp={"لا تستعجل الحب سيأتي وقت وتكتشفون أ
             }
 
             path=osvedio[ selectedItemId];
-            benfit=db.getBenFroVed(selectedName);
+           // benfit=db.getBenFroVed(selectedName);
+            temp=db.getBenFroVed(selectedName);
+           String[]temp1=new String[temp.size()];
+            for (int i=0;i<temp1.length;i++)
+            {
+                temp1[i]=temp.get(i);
+            }
+
+//Toast.makeText(getApplication(),"benfit"+temp1[2]+temp1.length,Toast.LENGTH_LONG).show();
 
 
-
-
-            customDialog1.showDialoggben(VidioPage.this,"الفائدة",temp,"إبدأ الآن",2);
+            customDialog1.showDialoggben(VidioPage.this,"الفائدة",temp1,"إبدأ الآن",temp1.length);
             customDialog1.ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

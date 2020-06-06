@@ -241,7 +241,7 @@ public class myDbAdapter {
     List<listitem> data = new ArrayList<>();
     SQLiteDatabase dbb = myhelper.getWritableDatabase();
     ContentValues contentValues = new ContentValues();
-    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555};
+    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666,myDbHelper.col_77777};
     Cursor cursor =dbb.query(myDbHelper.TABLE_NAME5,columns,null,null,null,null,null);
     StringBuffer buffer= new StringBuffer();
     while (cursor.moveToNext())
@@ -268,12 +268,13 @@ public class myDbAdapter {
   }
 
 
-  public String getBenFroVed(String title)
+  public ArrayList<String> getBenFroVed(String title)
   {
-    String txt,benfit = null,namVedio= null;
+    String txt,benfit=null,benfit2=null,benfit3= null,namVedio= null;
+    ArrayList<String> temp=new ArrayList<>();
     SQLiteDatabase dbb = myhelper.getWritableDatabase();
     ContentValues contentValues = new ContentValues();
-    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555};
+    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666,myDbHelper.col_77777};
     Cursor cursor =dbb.query(myDbHelper.TABLE_NAME5,columns,null,null,null,null,null);
     StringBuffer buffer= new StringBuffer();
     while (cursor.moveToNext())
@@ -284,12 +285,19 @@ public class myDbAdapter {
 
       if(txt.equals(title)) {
         benfit=cursor.getString(cursor.getColumnIndex(myDbHelper.col_55555));
+        benfit2=cursor.getString(cursor.getColumnIndex(myDbHelper.col_66666));
+        benfit3=cursor.getString(cursor.getColumnIndex(myDbHelper.col_77777));
+        temp.add(benfit);
+        temp.add(benfit2);
+        if(benfit3!=null) {
+          temp.add(benfit3);
+        }
         break;
       }
 
     }
-    System.out.println("ben"+benfit);
-    return benfit;
+    //System.out.println("ben"+benfit);
+    return temp;
   }
 
 
@@ -469,6 +477,8 @@ public class myDbAdapter {
     private static final String col_33333= "namimg";    // Column III
     private static final String col_44444= "namVedio";    // Column IIII
     private static final String col_55555= "benfit";    // Column IIII
+    private static final String col_66666= "benfit2";    // Column IIII
+    private static final String col_77777= "benfit3";    // Column IIII
     private static final String TABLE_NAMEAir = "airship";   // Table Name
     private static final String col_1Air="id";     // Column I (Primary Key)
     private static final String col_2Air= "word";    //Column II
