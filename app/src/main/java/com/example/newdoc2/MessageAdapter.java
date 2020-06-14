@@ -8,21 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import pl.droidsonroids.gif.GifImageView;
 
+import static com.example.newdoc2.Chat_activity.high_chat;
+import static com.example.newdoc2.Chat_activity.width_chat;
 import static com.example.newdoc2.FirstAct.yourFilePath;
 
 public class MessageAdapter extends BaseAdapter {
 
     List<Message> messages = new ArrayList<Message>();
     Context context;
+
 
     public MessageAdapter(Context context) {
         this.context = context;
@@ -64,13 +69,25 @@ public class MessageAdapter extends BaseAdapter {
             holder.messageBody.setText(message.getText());
             holder.imagpro.setImageBitmap(BitmapFactory.decodeFile( yourFilePath+"profil.jpg"));
         } else { // this message was sent by other
-            convertView = messageInflater.inflate(R.layout.their_masseg, null);
-            holder.avatar = (View) convertView.findViewById(R.id.avatar);
-            holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
-            convertView.setTag(holder);
+            if(!message.istyping) {
+                convertView = messageInflater.inflate(R.layout.their_masseg, null);
+                holder.avatar = (View) convertView.findViewById(R.id.avatar);
+                holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
+                convertView.setTag(holder);
+                holder.messageBody.setText(message.getText());
+            }
+            else
+            {
+                convertView = messageInflater.inflate(R.layout.thier_masseg_typing, null);
+                holder.avatar = (View) convertView.findViewById(R.id.avatar);
+                holder.giftyping = (GifImageView) convertView.findViewById(R.id.message_typing);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width_chat, high_chat);
+                holder.giftyping.setLayoutParams(lp);
+
+                convertView.setTag(holder);
+            }
 
 
-            holder.messageBody.setText(message.getText());
            /* GradientDrawable drawable = (GradientDrawable) holder.avatar.getBackground();
             drawable.setColor(Color.parseColor(message.getMemberData().getColor()));*/
         }
@@ -82,6 +99,7 @@ public class MessageAdapter extends BaseAdapter {
 
 class MessageViewHolder {
     public View avatar;
+    public GifImageView giftyping;
     public TextView name;
     public CircleImageView imagpro;
     public TextView messageBody;

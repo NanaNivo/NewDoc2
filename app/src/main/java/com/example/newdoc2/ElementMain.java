@@ -14,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -42,6 +43,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -58,7 +61,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
+import static com.example.newdoc2.Chat_activity.high_chat;
+import static com.example.newdoc2.Chat_activity.width_chat;
 import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.FirstAct.highFirst;
+import static com.example.newdoc2.FirstAct.widthFirst;
 import static com.example.newdoc2.R.color.colororangetoskil;
 
 //import com.bernaferrari.emojislider.EmojiSlider;
@@ -92,7 +99,10 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
     private  ActionBarDrawerToggle drawerToggle;
     private int mSelectedId;
 
-
+public CircleImageView profil;
+public ImageView cack,thank,optimize,give;
+public View header_top;
+public LinearLayout space_header;
     static int devicehigh;
 
 
@@ -105,9 +115,27 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         requestWindowFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element_main);
+        profil=(CircleImageView) findViewById(R.id.profil);
+        profil.getLayoutParams().height=widthFirst/9;
+        profil.getLayoutParams().width=widthFirst/9;
+        header_top=(View)findViewById(R.id.bg_top_header);
+        header_top.getLayoutParams().height=highFirst/2;
+        space_header=findViewById(R.id.space_to_header);
+        space_header.setLayoutParams(new LinearLayout.LayoutParams(widthFirst, highFirst/4));
+        Toast.makeText(getApplication(),"wwww"+header_top.getHeight(),Toast.LENGTH_LONG).show();
 
 
-        //to chang high dynamic
+        cack=(ImageView) findViewById(R.id.cake);
+        thank=(ImageView) findViewById(R.id.thank);
+        optimize=(ImageView) findViewById(R.id.aspir);
+        give=(ImageView) findViewById(R.id.give);
+        cack.setLayoutParams(new RelativeLayout.LayoutParams(widthFirst/8, highFirst/7));
+        thank.setLayoutParams(new RelativeLayout.LayoutParams(widthFirst/8, highFirst/7));
+        optimize.setLayoutParams(new RelativeLayout.LayoutParams(widthFirst/8, highFirst/7));
+        give.setLayoutParams(new RelativeLayout.LayoutParams(widthFirst/8, highFirst/7));
+
+
+       //to chang high dynamic
         DisplayMetrics displaymetrics = new DisplayMetrics();
         ((Activity) this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         //if you need three fix imageview in width
@@ -192,7 +220,10 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
         mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4));
         mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5));
 
-       //mSeekBar.setMinimumHeight(155);
+        //mSeekBar.setMinimumHeight(155);
+
+       /* RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(widthFirst, highFirst/7);
+        mSeekBar.setLayoutParams(lp);*/
 
 
 

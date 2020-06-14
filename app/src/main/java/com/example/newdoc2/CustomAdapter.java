@@ -16,7 +16,9 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import static com.example.newdoc2.ElementMain.devicehigh;
+import static com.example.newdoc2.FirstAct.widthFirst;
 
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {

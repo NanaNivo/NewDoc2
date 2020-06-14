@@ -32,6 +32,7 @@ import static com.example.newdoc2.FirstAct.db;
 import static com.example.newdoc2.FirstAct.yourFilePath;
 import static com.example.newdoc2.FirstAct.yourvideoPath;
 import static com.example.newdoc2.ElementMain.devicehigh;
+
 //import android.support.v7.widget.GridLayout;
 public class VidioPage extends AppCompatActivity {
    /* ListView gridview;
@@ -67,7 +68,7 @@ ArrayList<String>temp=null;
         DisplayMetrics displaymetrics = new DisplayMetrics();
         ((Activity) this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         //if you need three fix imageview in width
-         devicehigh = displaymetrics.widthPixels / 2;
+        devicehigh = displaymetrics.widthPixels / 2;
 
 
 
