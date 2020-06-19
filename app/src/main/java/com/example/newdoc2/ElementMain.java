@@ -241,7 +241,7 @@ public LinearLayout space_header;
         osImages[1]=yourFilePath+"relax.jpg";
         osImages[2]=yourFilePath+"hi.jpg";
         osImages[3]=yourFilePath+"food.jpg";
-        adapter = new CustomAdapter(this, osNameList, osImages,R.layout.item_element_main,false);
+        adapter = new CustomAdapter(this, osNameList, osImages,R.layout.item_element_main,1);
         recyclerView.setAdapter(adapter);
 
 
@@ -385,6 +385,11 @@ public LinearLayout space_header;
             else  if(selectedItemId == 2)
             {
                 Intent intent = new Intent(getApplicationContext(), Chat_activity.class);
+                startActivity(intent);
+            }
+            else  if(selectedItemId == 3)
+            {
+                Intent intent = new Intent(getApplicationContext(), pdfActivity.class);
                 startActivity(intent);
             }
 

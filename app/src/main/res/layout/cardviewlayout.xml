@@ -6,8 +6,7 @@
     card_view:cardBackgroundColor="#FFFFFD"
     card_view:cardCornerRadius="5dp"
     card_view:cardElevation="10dp"
-
-   android:layout_marginTop="5dp"
+  android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
 
@@ -41,17 +40,38 @@
 android:scaleType="fitXY"
         />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/playVedio"
+                android:src="@drawable/ic_play_vedio_24dp"
+
+              android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                  android:layout_weight="0.1"
+                android:scaleType="fitXY"
+                ></ImageView>
 
         <TextView
             android:id="@+id/os_texts"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_gravity="center"
-        android:paddingRight="20dp"
-            android:paddingLeft="20dp"
+            android:layout_weight="0.9"
+           android:layout_gravity="bottom"
+        android:paddingRight="0dp"
+            android:paddingLeft="0dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:gravity="center"
+            android:gravity="right"
 
             android:shadowColor="#000"
             android:shadowDx="3"
@@ -59,10 +79,11 @@ android:scaleType="fitXY"
             android:shadowRadius="6"
 
             android:textColor="@color/colorwight"
-            android:textSize="35dp"
+            android:textSize="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         />
+        </LinearLayout>
         <!--  android:background="#AA000000"-->
 
     </FrameLayout>

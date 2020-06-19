@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.FirstAct.highFirst;
+import static com.example.newdoc2.FirstAct.widthFirst;
 import static com.example.newdoc2.FirstAct.yourFilePath;
 import static com.example.newdoc2.FirstAct.yourvideoPath;
 import static com.example.newdoc2.ElementMain.devicehigh;
@@ -43,6 +46,7 @@ public class VidioPage extends AppCompatActivity {
     public static String path;
 
     static String benfit;
+   public ImageView playVedio;
 
    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -57,6 +61,7 @@ ArrayList<String>temp=null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vidio_page);
+
 
 
         //to addback bottum to actionbar
@@ -86,9 +91,8 @@ ArrayList<String>temp=null;
         List<listitem>list =db.getinfoFroVed();
         fillmatrix(list);
       System.out.println("nino"+osNameList[0]);
-            adapter = new CustomAdapter(this, osNameList, osImages,R.layout.cardviewlayout,true);
+            adapter = new CustomAdapter(this, osNameList, osImages,R.layout.cardviewlayout,0);
             recyclerView.setAdapter(adapter);
-
 
 
 
@@ -97,6 +101,8 @@ ArrayList<String>temp=null;
     @Override
     public boolean onSupportNavigateUp(){
         //code it to launch an intent to the activity you want
+        Intent intent = new Intent(getApplicationContext(), ElementMain.class);
+        startActivity(intent);
         finish();
         return true;
     }

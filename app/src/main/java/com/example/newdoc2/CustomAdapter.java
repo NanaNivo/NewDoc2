@@ -31,7 +31,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     LinearLayout len;
 
    int ll;
-   boolean activ;
+  int activ;
     private static LayoutInflater inflater=null;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,7 +46,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
     }
 
-    public CustomAdapter(Context context, String[] osNameList, String[] osImages,int l,boolean a) {
+    public CustomAdapter(Context context, String[] osNameList, String[] osImages,int l,int a) {
         result=osNameList;
         context=context;
         imageId=osImages;
@@ -62,13 +62,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(ll, parent, false);
-        if(activ) {
+        if(activ==0) {
             view.setOnClickListener(VidioPage.myOnClickListener);
         }
-        if(!activ) {
+        if(activ==1) {
             view.setOnClickListener(ElementMain.myOnClickListener);
         }
-
+         if(activ==2)
+         {
+             view.setOnClickListener(pdfActivity.myOnClickListener);
+         }
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
