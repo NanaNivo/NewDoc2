@@ -17,9 +17,10 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.newdoc2.FirstActivity.highFirst;
+import static com.example.newdoc2.FirstActivity.widthFirst;
 import static com.example.newdoc2.VidioPage.path;
-import static com.example.newdoc2.FirstAct.highFirst;
-import static com.example.newdoc2.FirstAct.widthFirst;
+
 public class VedioShow extends AppCompatActivity {
   public ImageButton full_secreen,closeVidio;
   VideoView videoView;

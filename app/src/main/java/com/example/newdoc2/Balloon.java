@@ -25,7 +25,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import static com.example.newdoc2.FirstAct.db;
+
+import static com.example.newdoc2.FirstActivity.db;
 import static com.example.newdoc2.airshipActivity.appearwords;
 import static com.example.newdoc2.airshipActivity.currword;
 import static com.example.newdoc2.airshipActivity.mNextword;

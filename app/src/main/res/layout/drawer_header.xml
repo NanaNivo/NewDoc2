@@ -10,11 +10,11 @@ android:gravity="bottom">
         android:layout_height="60dp"
         android:layout_width="60dp"
         android:elevation="1dp"
-        android:id="@+id/profil"
+        android:id="@+id/profilheader"
         android:layout_marginRight="20dp"
         android:layout_gravity="right"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_photo_user"
+
         />
 
 <TextView

@@ -10,7 +10,7 @@
         <item
             android:id="@+id/navigation_profil"
             android:icon="@drawable/ic_username"
-            android:title="الصفحة الشخصية"/>
+            android:title="نتيجة التشخيص"/>
 
         <item
             android:id="@+id/navigation_log_out"

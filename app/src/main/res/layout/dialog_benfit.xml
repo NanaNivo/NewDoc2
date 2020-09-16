@@ -17,10 +17,9 @@
        android:layout_weight="4"
        >
 
-        <TextView
-            android:layout_height="0dp"
+       <!-- <TextView
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_weight="0.5"
            android:gravity="right"
 
           android:layout_marginRight="30dp"
@@ -31,22 +30,21 @@
             android:textStyle="bold"
             android:textSize="35dp"
             android:textColor="@color/colorAccent"
-            android:id="@+id/titlebn"/>
+            android:id="@+id/titlebn"/>-->
 
         <TextView
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_weight="0.5"
             android:gravity="right"
 
             android:layout_marginRight="30dp"
             android:paddingRight="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="10dp"
             android:textStyle="bold"
-            android:textSize="25dp"
+            android:textSize="26dp"
             android:textColor="@color/colororangetoskil"
             android:text="هذا النشاط يساعدك في:"
             android:id="@+id/benword"/>
@@ -54,9 +52,30 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+          android:layout_weight="2"
             android:orientation="vertical">
-        <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:id="@+id/len_to_radio"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:id="@+id/contentt"
+                    android:textStyle="normal|italic"
+                    android:textSize="25dp"
+                  />
+            </LinearLayout>
+     <!--   <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
@@ -78,23 +97,58 @@
 
             >
         </RadioGroup>
-        </LinearLayout>
+        </LinearLayout>-->
         </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                >
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                >
         <Button
-            android:layout_height="0dp"
-            android:layout_width="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
             android:textColor="#FFF"
             android:id="@+id/buttonOkben"
+            android:background="@drawable/btnstyle"
+            android:gravity="center"
+            android:layout_margin="15dp"
 
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="25dp"
-
-            android:layout_marginLeft="25dp"
-            android:background="@color/colororang"
             android:layout_gravity="center"/>
-
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                >
+            </LinearLayout>
+           <!-- <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                >
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:textColor="@color/colororangetoskil"
+                android:text="إلغاء"
+                android:id="@+id/buttoncancleben"
+                android:gravity="center"
+                android:layout_margin="15dp"
+                android:layout_gravity="center"/>
+            </LinearLayout>-->
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

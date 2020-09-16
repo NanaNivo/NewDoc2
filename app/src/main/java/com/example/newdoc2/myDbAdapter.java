@@ -241,7 +241,7 @@ public class myDbAdapter {
     List<listitem> data = new ArrayList<>();
     SQLiteDatabase dbb = myhelper.getWritableDatabase();
     ContentValues contentValues = new ContentValues();
-    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666,myDbHelper.col_77777};
+    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666};
     Cursor cursor =dbb.query(myDbHelper.TABLE_NAME5,columns,null,null,null,null,null);
     StringBuffer buffer= new StringBuffer();
     while (cursor.moveToNext())
@@ -254,6 +254,7 @@ public class myDbAdapter {
       dataModel.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.col_22222)));
       dataModel.setImg(cursor.getString(cursor.getColumnIndex(myDbHelper.col_33333)));
       dataModel.setNamVedio(cursor.getString(cursor.getColumnIndex(myDbHelper.col_44444)));
+      dataModel.setshow(cursor.getString(cursor.getColumnIndex(myDbHelper.col_66666)));
       data.add(dataModel);
 
               /*  s[0]=txt;
@@ -268,13 +269,13 @@ public class myDbAdapter {
   }
 
 
-  public ArrayList<String> getBenFroVed(String title)
+  public String getBenFroVed(String title)
   {
     String txt,benfit=null,benfit2=null,benfit3= null,namVedio= null;
     ArrayList<String> temp=new ArrayList<>();
     SQLiteDatabase dbb = myhelper.getWritableDatabase();
     ContentValues contentValues = new ContentValues();
-    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666,myDbHelper.col_77777};
+    String[] columns = {myDbHelper.col_11111, myDbHelper.col_22222, myDbHelper.col_33333, myDbHelper.col_44444,myDbHelper.col_55555,myDbHelper.col_66666};
     Cursor cursor =dbb.query(myDbHelper.TABLE_NAME5,columns,null,null,null,null,null);
     StringBuffer buffer= new StringBuffer();
     while (cursor.moveToNext())
@@ -285,19 +286,58 @@ public class myDbAdapter {
 
       if(txt.equals(title)) {
         benfit=cursor.getString(cursor.getColumnIndex(myDbHelper.col_55555));
-        benfit2=cursor.getString(cursor.getColumnIndex(myDbHelper.col_66666));
-        benfit3=cursor.getString(cursor.getColumnIndex(myDbHelper.col_77777));
-        temp.add(benfit);
-        temp.add(benfit2);
-        if(benfit3!=null) {
-          temp.add(benfit3);
-        }
         break;
       }
 
     }
     //System.out.println("ben"+benfit);
-    return temp;
+    return benfit;
+  }
+
+  public int updateshowToVidio(String word1) {
+    SQLiteDatabase dbb = myhelper.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(myDbHelper.col_66666, "true");
+    int i=dbb.update(myDbHelper.TABLE_NAME5,contentValues,myDbHelper.col_22222 +"='"+word1+"'",null);
+    return i;
+  }
+
+
+  public List<listitem> getinfoFropdf()
+  {
+    String txt,namimg ,namVedio= null;
+    int count = 0;
+    // String []s=new String[3];
+    // Map<String, Integer> stringIntegerMap = null;
+    List<listitem> data = new ArrayList<>();
+    SQLiteDatabase dbb = myhelper.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    String[] columns = {myDbHelper.col_111111, myDbHelper.col_222222, myDbHelper.col_333333};
+    Cursor cursor =dbb.query(myDbHelper.TABLE_NAME6,columns,null,null,null,null,null);
+    StringBuffer buffer= new StringBuffer();
+    while (cursor.moveToNext())
+    {
+      listitem dataModel = new listitem();
+      int cid =cursor.getInt(cursor.getColumnIndex(myDbHelper.col_11111));
+
+      // if(cid==nuberved)
+      // {
+      dataModel.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.col_222222)));
+      dataModel.setshow(cursor.getString(cursor.getColumnIndex(myDbHelper.col_333333)));
+      data.add(dataModel);
+
+    }
+    return data;
+  }
+
+
+
+  public int updateshowTopdf(String word1) {
+    SQLiteDatabase dbb = myhelper.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(myDbHelper.col_333333,"true");
+    int i=dbb.update(myDbHelper.TABLE_NAME6,contentValues,myDbHelper.col_222222+"='"+word1+"'",null);
+    return i;
   }
 
 
@@ -477,8 +517,14 @@ public class myDbAdapter {
     private static final String col_33333= "namimg";    // Column III
     private static final String col_44444= "namVedio";    // Column IIII
     private static final String col_55555= "benfit";    // Column IIII
-    private static final String col_66666= "benfit2";    // Column IIII
-    private static final String col_77777= "benfit3";    // Column IIII
+    private static final String col_66666= "show";    // Column IIII
+
+    private static final String TABLE_NAME6 = "allpdf";   // Table Name
+    private static final String col_111111="id";     // Column I (Primary Key)
+    private static final String col_222222= "name";    //Column II
+    private static final String col_333333= "showpdf";    // Column III
+
+
     private static final String TABLE_NAMEAir = "airship";   // Table Name
     private static final String col_1Air="id";     // Column I (Primary Key)
     private static final String col_2Air= "word";    //Column II

@@ -1,10 +1,12 @@
 package com.example.newdoc2;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -17,12 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,8 +37,11 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -57,16 +65,23 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.mindorks.placeholderview.PlaceHolderView;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
 import static com.example.newdoc2.Chat_activity.high_chat;
 import static com.example.newdoc2.Chat_activity.width_chat;
-import static com.example.newdoc2.FirstAct.db;
-import static com.example.newdoc2.FirstAct.highFirst;
-import static com.example.newdoc2.FirstAct.widthFirst;
+
+
+
+import static com.example.newdoc2.FirstActivity.db;
+import static com.example.newdoc2.FirstActivity.highFirst;
+import static com.example.newdoc2.FirstActivity.widthFirst;
+import static com.example.newdoc2.FirstActivity.yourFilePath;
 import static com.example.newdoc2.R.color.colororangetoskil;
+import static com.example.newdoc2.R.drawable.ic_photo_user;
 
 //import com.bernaferrari.emojislider.EmojiSlider;
 
@@ -86,7 +101,7 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     static View.OnClickListener myOnClickListener;
-    static String yourFilePath ;
+
 
 
    /* private PlaceHolderView mDrawerView;
@@ -99,11 +114,16 @@ public class ElementMain extends AppCompatActivity implements    NavigationView.
     private  ActionBarDrawerToggle drawerToggle;
     private int mSelectedId;
 
-public CircleImageView profil;
+    List<listitem>list;
+    List<listitem>list2;
+    int levelShowVedio=0;
+    int levelshowpdf=0;
+public CircleImageView profil,profileheader;
 public ImageView cack,thank,optimize,give;
 public View header_top;
 public LinearLayout space_header;
     static int devicehigh;
+    int levelAirchip;
 
 
     @SuppressLint("ResourceAsColor")
@@ -116,8 +136,24 @@ public LinearLayout space_header;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element_main);
         profil=(CircleImageView) findViewById(R.id.profil);
+
+
+     LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View v = inflater.inflate(R.layout.drawer_header, null);
+
+
+
+
+      profileheader=(CircleImageView) v.findViewById(R.id.profilheader);
+
+      profileheader.setImageBitmap(BitmapFactory.decodeFile(yourFilePath+"myprofile.jpg"));
+
+
+
         profil.getLayoutParams().height=widthFirst/9;
         profil.getLayoutParams().width=widthFirst/9;
+
+
         header_top=(View)findViewById(R.id.bg_top_header);
         header_top.getLayoutParams().height=highFirst/2;
         space_header=findViewById(R.id.space_to_header);
@@ -168,8 +204,12 @@ public LinearLayout space_header;
 
 // implement setNavigationSelectedListener event
         mDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+
 
 // add code here what you need on click of items.
                 Toast.makeText(getApplicationContext(), "menuItem" + menuItem, Toast.LENGTH_LONG).show();
@@ -186,9 +226,9 @@ public LinearLayout space_header;
                }
                 if(itemId==R.id.navigation_profil) {
 
-                    Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                    Intent intent = new Intent(getApplicationContext(), exam.class);
                     startActivity(intent);
-                    txt_toolbar.setText("الصفحة الشخصية");
+                    txt_toolbar.setText("نتيجة التشخيص");
                 }
                // mDrawerLayout.closeDrawer(GravityCompat.START);
 
@@ -209,16 +249,46 @@ public LinearLayout space_header;
         mSeekBar5 = (SeekBar) findViewById(R.id.seekbar5);
         mTextViewtxt=((TextView) findViewById(R.id.tv));
 
-        mSeekBar.setProgress(16);
-        mSeekBar2.setProgress(16);
-        mSeekBar3.setProgress(16);
-        mSeekBar4.setProgress(16);
-        mSeekBar5.setProgress(16);
+
+
+
+       list =db.getinfoFroVed();
+        Toast.makeText(this,"ccccccc"+list.size(),Toast.LENGTH_LONG).show();
+       for(int i=0;i<list.size();i++)
+       {
+           if(list.get(i).show.equals("true"))
+           {
+             levelShowVedio++;
+             Toast.makeText(this,"xxxxx"+list.get(i).show,Toast.LENGTH_LONG).show();
+           }
+
+       }
+           mSeekBar.setProgress(16);
+           mSeekBar2.setProgress(16);
+           mSeekBar3.setProgress(16);
+           mSeekBar4.setProgress(16);
+           mSeekBar5.setProgress(16);
+
         mSeekBar.setThumb(getThumb(1,R.drawable.seekbaethumb));
         mSeekBar2.setThumb(getThumb(1,R.drawable.seekthumb2));
         mSeekBar3.setThumb(getThumb(1,R.drawable.seekthumb3));
         mSeekBar4.setThumb(getThumb(1,R.drawable.seekthumb4));
         mSeekBar5.setThumb(getThumb(1,R.drawable.seekthumb5));
+
+
+        levelAirchip = getSharedPreferences("PREFERENCELevelAirchip", MODE_PRIVATE).getInt("levelAirchip", 0);
+
+        if(levelAirchip!=0)
+        {
+            mSeekBar.setProgress(levelAirchip*25);
+            mSeekBar.setThumb(getThumb(levelAirchip*25,R.drawable.seekbaethumb));
+        }
+
+        if(levelShowVedio!=0)
+       {
+           mSeekBar2.setProgress(levelShowVedio*25);
+           mSeekBar2.setThumb(getThumb(levelShowVedio*25,R.drawable.seekthumb2));
+       }
 
         //mSeekBar.setMinimumHeight(155);
 
@@ -226,6 +296,22 @@ public LinearLayout space_header;
         mSeekBar.setLayoutParams(lp);*/
 
 
+        list2 =db.getinfoFropdf();
+        for(int i=0;i<list2.size();i++)
+        {
+            if(list2.get(i).show.equals("true"))
+            {
+                levelshowpdf++;
+
+            }
+
+        }
+
+        if(levelshowpdf!=0)
+        {
+            mSeekBar4.setProgress(levelshowpdf*25);
+            mSeekBar4.setThumb(getThumb(levelshowpdf*25,R.drawable.seekthumb4));
+        }
 
 
         myOnClickListener = new MyOnClickListener(this);
@@ -235,13 +321,13 @@ public LinearLayout space_header;
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        yourFilePath = this.getFilesDir() + "/" + "images" + "/";
+
         osImages=new String[4];
         osImages[0]=yourFilePath+"ballon1.jpg";
         osImages[1]=yourFilePath+"relax.jpg";
         osImages[2]=yourFilePath+"hi.jpg";
         osImages[3]=yourFilePath+"food.jpg";
-        adapter = new CustomAdapter(this, osNameList, osImages,R.layout.item_element_main,1);
+        adapter = new CustomAdapter(this, osNameList, osImages, R.layout.item_element_main,1);
         recyclerView.setAdapter(adapter);
 
 
@@ -322,6 +408,70 @@ public LinearLayout space_header;
 
 
 
+        profil.setImageBitmap(BitmapFactory.decodeFile(yourFilePath+"myprofile.jpg"));
+
+
+
+
+
+
+    }
+
+
+
+
+        public void profilee(View view) {
+
+
+            Intent i = new Intent(
+                    Intent.ACTION_PICK,
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+            startActivityForResult(i, 1);
+
+    }
+
+
+        @TargetApi(Build.VERSION_CODES.O)
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            //if(resultCode == RESULT_OK)
+            if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                //  Toast.makeText(addphotos.this, picturePath,Toast.LENGTH_LONG).show();
+
+                profil.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                saveToInternalStorage(BitmapFactory.decodeFile(picturePath));
+            }
+        }
+
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        // Create imageDir
+        File mypath=new File(yourFilePath,"myprofile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //                fos.close();
+        }
+        return mypath.getAbsolutePath();
     }
 
 
@@ -419,6 +569,9 @@ public LinearLayout space_header;
         mDrawer= (NavigationView) findViewById(R.id.main_drawer);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+
 
     }
 

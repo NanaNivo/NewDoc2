@@ -9,7 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.FirstActivity.db;
+
 
 public class regester extends AppCompatActivity {
   private Button btnLogin;

@@ -20,7 +20,7 @@
 android:layout_gravity="top"
             android:gravity="center"
 
-            android:textSize="14sp" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 

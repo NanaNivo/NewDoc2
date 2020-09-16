@@ -11,7 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.FirstActivity.db;
+
 
 public class MainActivity extends AppCompatActivity {
   RadioButton ans1, ans2, ans3,ans4;
@@ -80,7 +81,9 @@ isclicable2=false;
             result = db.getthesum();
             String[] all = db.resultdiagnosis(result);
             Toast.makeText(getApplicationContext(), "the result of stress" + all[0] + ",,the result of anxiety,,," + all[1] + "the result of depression" + all[2], Toast.LENGTH_LONG).show();
-
+            getSharedPreferences("PREFERENCEExam1", MODE_PRIVATE).edit().putString("Exam1", all[0]).commit();
+            getSharedPreferences("PREFERENCEExam2", MODE_PRIVATE).edit().putString("Exam2", all[1]).commit();
+            getSharedPreferences("PREFERENCEExam3", MODE_PRIVATE).edit().putString("Exam3", all[2]).commit();
             Intent intent = new Intent(getApplicationContext(), Info.class);
             startActivity(intent);
           } else {

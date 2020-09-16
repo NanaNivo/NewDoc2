@@ -15,13 +15,15 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.newdoc2.ElementMain.devicehigh;
-import static com.example.newdoc2.FirstAct.db;
-import static com.example.newdoc2.FirstAct.yourFilePath;
+
+import static com.example.newdoc2.FirstActivity.db;
+import static com.example.newdoc2.FirstActivity.yourFilePath;
 import static com.example.newdoc2.PdfShowActivity.SAMPLE_FILE;
 import static com.example.newdoc2.PdfShowActivity.pdfFileName;
 
@@ -83,6 +85,8 @@ public class pdfActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         //code it to launch an intent to the activity you want
         finish();
+        Intent intent = new Intent(getApplicationContext(), ElementMain.class);
+        startActivity(intent);
         return true;
     }
 
@@ -120,6 +124,8 @@ public class pdfActivity extends AppCompatActivity {
 
             }
             SAMPLE_FILE=showPdf[selectedItemId];
+            Toast.makeText(getBaseContext(),"nnnn"+selectedName,Toast.LENGTH_LONG).show();
+            db.updateshowTopdf(selectedName);
             Intent intent = new Intent(getApplicationContext(), PdfShowActivity.class);
             startActivity(intent);
 

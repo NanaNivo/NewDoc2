@@ -1,7 +1,9 @@
 package com.example.newdoc2;
 
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -29,12 +31,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.newdoc2.FirstAct.db;
-import static com.example.newdoc2.FirstAct.highFirst;
-import static com.example.newdoc2.FirstAct.widthFirst;
-import static com.example.newdoc2.FirstAct.yourFilePath;
-import static com.example.newdoc2.FirstAct.yourvideoPath;
+
+
+
 import static com.example.newdoc2.ElementMain.devicehigh;
+import static com.example.newdoc2.FirstActivity.db;
+import static com.example.newdoc2.FirstActivity.yourFilePath;
+import static com.example.newdoc2.FirstActivity.yourvideoPath;
 
 //import android.support.v7.widget.GridLayout;
 public class VidioPage extends AppCompatActivity {
@@ -46,6 +49,7 @@ public class VidioPage extends AppCompatActivity {
     public static String path;
 
     static String benfit;
+
    public ImageView playVedio;
 
    private static RecyclerView.Adapter adapter;
@@ -96,6 +100,7 @@ ArrayList<String>temp=null;
 
 
 
+
         }
     //override to addback bottum to actionbar
     @Override
@@ -121,6 +126,7 @@ ArrayList<String>temp=null;
         }
     }
 
+
     private class MyOnClickListener implements View.OnClickListener {
 
         private final Context context;
@@ -132,7 +138,9 @@ ArrayList<String>temp=null;
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         public void onClick(View v) {
+
             clicItem(v);
+
         }
 
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -152,18 +160,19 @@ ArrayList<String>temp=null;
             }
 
             path=osvedio[ selectedItemId];
-           // benfit=db.getBenFroVed(selectedName);
-            temp=db.getBenFroVed(selectedName);
+            benfit=db.getBenFroVed(selectedName);
+            db.updateshowToVidio(selectedName);
+         /*   temp=db.getBenFroVed(selectedName);
            String[]temp1=new String[temp.size()];
             for (int i=0;i<temp1.length;i++)
             {
                 temp1[i]=temp.get(i);
-            }
+            }*/
 
-//Toast.makeText(getApplication(),"benfit"+temp1[2]+temp1.length,Toast.LENGTH_LONG).show();
+//Toast.makeText(getApplication(),"benfit"+benfit,Toast.LENGTH_LONG).show();
 
 
-            customDialog1.showDialoggben(VidioPage.this,"الفائدة",temp1,"إبدأ الآن",temp1.length);
+           customDialog1.showDialoggben(VidioPage.this,"الفائدة",benfit,"إبدأ الآن");
             customDialog1.ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,7 +183,45 @@ ArrayList<String>temp=null;
                     customDialog1.dialogShown2=false;
                 }
             });
+            customDialog1.alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                  /*  Intent ii = new Intent(VidioPage.this, VidioPage.class);
+                    startActivity(ii);*/
+                    customDialog1=new myCustomDialog(VidioPage.this);
 
+                    myOnClickListener = new MyOnClickListener(VidioPage.this);
+                    recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+                    recyclerView.setHasFixedSize(true);
+
+                    layoutManager = new LinearLayoutManager(VidioPage.this);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+                    List<listitem>list =db.getinfoFroVed();
+                    fillmatrix(list);
+                    System.out.println("nino"+osNameList[0]);
+                    adapter = new CustomAdapter(VidioPage.this, osNameList, osImages,R.layout.cardviewlayout,0);
+                    recyclerView.setAdapter(adapter);
+
+
+                }
+            });
+
+
+
+
+
+
+           /* customDialog1.cancle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //done what do you want to do
+                    customDialog1.alertDialog.dismiss();
+                    customDialog1.dialogShown2=false;
+                }
+            });*/
            /* final FlatDialog flatDialog = new FlatDialog(VidioPage.this);
             flatDialog.setTitle("Benfit")
                     .setBackgroundColor(context.getResources().getColor(R.color.colorwight))

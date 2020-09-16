@@ -1,6 +1,9 @@
 package com.example.newdoc2;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
+
     private String text; // message body
     private String memberna;
     private boolean belongsToCurrentUser; // is this message sent by us?

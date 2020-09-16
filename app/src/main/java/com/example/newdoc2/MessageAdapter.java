@@ -21,7 +21,8 @@ import pl.droidsonroids.gif.GifImageView;
 
 import static com.example.newdoc2.Chat_activity.high_chat;
 import static com.example.newdoc2.Chat_activity.width_chat;
-import static com.example.newdoc2.FirstAct.yourFilePath;
+import static com.example.newdoc2.FirstActivity.yourFilePath;
+
 
 public class MessageAdapter extends BaseAdapter {
 
@@ -67,7 +68,7 @@ public class MessageAdapter extends BaseAdapter {
             holder.imagpro = (CircleImageView) convertView.findViewById(R.id.profilmass);
             convertView.setTag(holder);
             holder.messageBody.setText(message.getText());
-            holder.imagpro.setImageBitmap(BitmapFactory.decodeFile( yourFilePath+"profil.jpg"));
+            holder.imagpro.setImageBitmap(BitmapFactory.decodeFile( yourFilePath+"myprofile.jpg"));
         } else { // this message was sent by other
             if(!message.istyping) {
                 convertView = messageInflater.inflate(R.layout.their_masseg, null);

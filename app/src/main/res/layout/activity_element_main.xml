@@ -178,6 +178,8 @@ android:layout_height="match_parent"
                                 android:layout_width="match_parent"
                                 android:elevation="1dp"
                                 android:id="@+id/profil"
+                                android:onClick="profilee"
+                                android:clickable="true"
                                 android:layout_marginTop="55dp"
                                 android:src="@drawable/ic_photo_user"
                                 />

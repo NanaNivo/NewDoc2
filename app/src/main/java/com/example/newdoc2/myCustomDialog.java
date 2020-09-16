@@ -2,6 +2,7 @@ package com.example.newdoc2;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -21,12 +22,12 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.solver.widgets.ConstraintWidget;
-import androidx.constraintlayout.solver.widgets.ConstraintWidget.ContentAlignment;
+//import androidx.constraintlayout.solver.widgets.ConstraintWidget.ContentAlignment;
 
 public class  myCustomDialog extends Activity {
   View dialogView;
   AlertDialog alertDialog;
-  Button ok;
+  Button ok,cancle;
   TextView title;
   TextView content;
   RadioGroup groupben;
@@ -88,8 +89,9 @@ else {
   }
 
 
+  @SuppressLint("ResourceAsColor")
   @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-  public void showDialoggben(final Activity a, String titlle, String[] contentt, String but, int sizebenfet) {
+  public void showDialoggben(final Activity a, String titlle, String contentt, String but) {
 
 
     if(dialogShown2)
@@ -105,15 +107,23 @@ else {
 
       builder.setView(dialogView);
       alertDialog = builder.create();
-      alertDialog.setCanceledOnTouchOutside(false);
-      groupben = (RadioGroup) dialogView.findViewById(R.id.groupben);
+      alertDialog.setCanceledOnTouchOutside(true);
+
+
+
+     // groupben = (RadioGroup) dialogView.findViewById(R.id.groupben);
       // alertDialog.getWindow().requestFeature(Window.FEATURE_CONTEXT_MENU);
       ok = (Button) dialogView.findViewById(R.id.buttonOkben);
-      title = (TextView) dialogView.findViewById(R.id.titlebn);
-      title.setText(titlle);
-      addRadioButtons(sizebenfet, contentt, a);
+        content = (TextView) dialogView.findViewById(R.id.contentt);
+      /*  cancle = (Button) dialogView.findViewById(R.id.buttoncancleben);
+        cancle.setBackground(null);*/
+      //title = (TextView) dialogView.findViewById(R.id.titlebn);
+     // title.setText(titlle);
+        content.setText(contentt);
+   //   addRadioButtons(sizebenfet, contentt, a);
       ok.setText(but);
-System.out.println("sizebenfet"+sizebenfet);
+//System.out.println("sizebenfet"+sizebenfet);
+
 
       //sizeWindow
       DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -132,7 +142,7 @@ System.out.println("sizebenfet"+sizebenfet);
 
 // we need to set width, height after calling show() method
       Window window = alertDialog.getWindow();
-      window.setLayout(screenWidth - (screenWidth / 9), screenHeight-(screenHeight/3));
+      window.setLayout(screenWidth - (screenWidth / 6),  WindowManager.LayoutParams.WRAP_CONTENT);
       alertDialog.show();
       // return customDialog;
     }

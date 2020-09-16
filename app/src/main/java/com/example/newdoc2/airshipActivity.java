@@ -22,7 +22,8 @@ import java.util.Random;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.newdoc2.FirstAct.db;
+import static com.example.newdoc2.FirstActivity.db;
+
 
 //import com.developer.kalert.KAlertDialog;
 //import com.developer.kalert.KAlertDialog;
@@ -64,6 +65,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
     myCustomDialog customDialog;
     private SoundHelper mSoundHelper;
 
+    public int levelAirchip=0;
 
     @SuppressLint({"WrongConstant", "ResourceAsColor"})
     @Override
@@ -180,6 +182,8 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
         BALLOONS_PER_LEVEL=BALLOONS_PER_LEVEL+2;
         carrntcreatballon=0;
         // mGoButton.setText("Stop Game");
+        levelAirchip++;
+        getSharedPreferences("PREFERENCELevelAirchip", MODE_PRIVATE).edit().putInt("levelAirchip", levelAirchip).commit();
     }
 
     private void finishLevel() {
@@ -409,7 +413,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 @Override
                 public void onClick(View v) {
                     //done what do you want to do
-                    Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                    Intent intent = new Intent(getApplicationContext(), ElementMain.class);
                     startActivity(intent);
                     customDialog.alertDialog.dismiss();
                     customDialog.dialogShown=false;
@@ -423,7 +427,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 @Override
                 public void onClick(View v) {
                     //done what do you want to do
-                    Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                    Intent intent = new Intent(getApplicationContext(), ElementMain.class);
                     startActivity(intent);
                     customDialog.alertDialog.dismiss();
                     customDialog.dialogShown=false;
