@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import static com.example.newdoc2.FirstActivity.highFirst;
 import static com.example.newdoc2.FirstActivity.widthFirst;
 import static com.example.newdoc2.VidioPage.path;
+import static com.example.newdoc2.VidioPage.selectPublic;
 
 public class VedioShow extends AppCompatActivity {
   public ImageButton full_secreen,closeVidio;
@@ -29,6 +30,8 @@ public class VedioShow extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_vedio_show);
     getWindow().setFormat(PixelFormat.UNKNOWN);
+    getSupportActionBar().setTitle( selectPublic);
+
      videoView =(VideoView)findViewById(R.id.vdVw);
     full_secreen=(ImageButton)findViewById(R.id.full_screen) ;
     closeVidio=(ImageButton)findViewById(R.id.closVedio_screen) ;

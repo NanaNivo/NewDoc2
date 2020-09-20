@@ -28,6 +28,10 @@ Boolean isclicable2=false;
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+
+    getSupportActionBar().setTitle("كن سعيداً");
+
     group= (RadioGroup) findViewById(R.id.group);
     ans1= (RadioButton) findViewById(R.id.ans1);
     ans2 = (RadioButton) findViewById(R.id.ans2);

@@ -68,6 +68,7 @@ ArrayList<String>temp=null;
 
 
 
+        getSupportActionBar().setTitle("الاسترخاءً");
         //to addback bottum to actionbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -127,6 +128,7 @@ ArrayList<String>temp=null;
     }
 
 
+    public static String selectPublic;
     private class MyOnClickListener implements View.OnClickListener {
 
         private final Context context;
@@ -162,6 +164,7 @@ ArrayList<String>temp=null;
             path=osvedio[ selectedItemId];
             benfit=db.getBenFroVed(selectedName);
             db.updateshowToVidio(selectedName);
+            selectPublic=selectedName;
          /*   temp=db.getBenFroVed(selectedName);
            String[]temp1=new String[temp.size()];
             for (int i=0;i<temp1.length;i++)

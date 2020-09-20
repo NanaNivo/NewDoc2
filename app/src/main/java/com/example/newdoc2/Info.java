@@ -60,7 +60,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
                     numqQues++;
                     temp = null;
                     groupInfo.removeAllViews();
-                    if (numqQues < 12) {
+                    if (numqQues < 8) {
                         Toast.makeText(Info.this, "ccc" + numqQues, Toast.LENGTH_SHORT).show();
                         temp = db.getQuesFroInfo(numqQues);
                         // db.insertData("وجدت صعوبة في الهدوء و الراحة",2);
@@ -70,12 +70,12 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
                         addRadioButtons(Integer.parseInt(number));
                     }
 
-                    if (numqQues == 12) {
+                    if (numqQues == 8) {
                         quesInfo.setText(null);
                         //for inter as once first
                         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", true).commit();
 
-                        Intent intent = new Intent(getApplicationContext(), ElementMain.class);
+                        Intent intent = new Intent(getApplicationContext(), exam.class);
                         startActivity(intent);
                     }
                 }

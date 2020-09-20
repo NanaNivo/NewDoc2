@@ -78,6 +78,8 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
 
 
+        getSupportActionBar().setTitle("كن سعيداً");
+
         //  getWindow().setBackgroundDrawableResource(R.drawable.modern_background);
 
         mContentView = (ViewGroup) findViewById(R.id.activity_main);
@@ -491,10 +493,10 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
             @Override
             public void onClick(View v) {
                 //done what do you want to do
-                for (Balloon balloon : mBalloons) {
+           /*     for (Balloon balloon : mBalloons) {
                     mContentView.removeView(balloon);
                     balloon.setPopped(true);
-                }
+                }*/
 
                 mBalloons.clear();
                 mPlaying = false;

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.newdoc2">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".exam"></activity>
-        <activity android:name=".FirstAct" />
+
         <activity android:name=".PdfShowActivity" />
         <activity android:name=".pdfActivity" />
         <activity android:name=".Chat_activity" />
@@ -19,7 +20,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".VidioPage" />
         <activity android:name=".VedioShow" />
-        <activity android:name=".Main2Activity" />
+
         <activity android:name=".Info" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Balloon" />
@@ -38,5 +39,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

@@ -22,4 +22,12 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+
+
+    <string name="API_key">zXEBE4YA0W5h206meZSRkCSFwUGZOCQzTMJ5rfcfbYzE</string>
+    <string name="pass"> </string>
+    <string name="assestant_url">https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/0e9e3079-7660-4b79-8b1a-5c73f3148642</string>
+    <string name="assistant_id">789a42fb-8cbc-40c2-90a2-c8f30ebd3fe9</string>
+
 </resources>

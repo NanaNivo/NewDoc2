@@ -22,6 +22,9 @@ public class exam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam);
 
+
+        getSupportActionBar().setTitle("نتيجة التشخيصً");
+
         mBlurringView2 = (BlurringView) findViewById(R.id.blurring_view2);
         View blurredView2 = findViewById(R.id.blurred_view2);
 

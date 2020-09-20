@@ -47,6 +47,9 @@ public class pdfActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pdf);
 
 
+        getSupportActionBar().setTitle("التثقيفً");
+
+
 
         //to addback bottum to actionbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

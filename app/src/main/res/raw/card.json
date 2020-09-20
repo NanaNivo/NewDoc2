@@ -1,0 +1,448 @@
+{
+  "intents": [
+    {
+      "intent": "cannot",
+      "examples": [
+        {
+          "text": "أشعر بالتعب"
+        },
+        {
+          "text": "انا متعب"
+        },
+        {
+          "text": "أنا مرهق ولدي بعض القلق"
+        },
+        {
+          "text": "لا يمكنني فعل شيء"
+        }
+      ],
+      "description": "لا يمكنني فعل شيء"
+    },
+    {
+      "intent": "اريد",
+      "examples": [
+        {
+          "text": "نعم أرغب"
+        },
+        {
+          "text": "نعم أريد"
+        }
+      ],
+      "description": "اريد"
+    },
+    {
+      "intent": "اضطراب",
+      "examples": [
+        {
+          "text": "أجل لدي"
+        },
+        {
+          "text": "أشعر ببعض الإضطرابات"
+        },
+        {
+          "text": "نعم لدي بعض الإضطرابات"
+        }
+      ],
+      "description": "نعم لدي بعض الإضطرابات"
+    },
+    {
+      "intent": "الاصدقاء",
+      "examples": [
+        {
+          "text": "لا ليست جيدة"
+        },
+        {
+          "text": "نعم جيدة"
+        }
+      ],
+      "description": "الاصدقاء"
+    },
+    {
+      "intent": "الرياضة",
+      "examples": [
+        {
+          "text": "التمرين الوحيد هو المشي"
+        },
+        {
+          "text": "لا امارس الرياضة ابدا"
+        },
+        {
+          "text": "نعم امارس الرياضة كتيرا"
+        }
+      ],
+      "description": "الرياضة"
+    },
+    {
+      "intent": "الطعام",
+      "examples": [
+        {
+          "text": "لا ليس كذلك"
+        },
+        {
+          "text": "نعم كذلك"
+        }
+      ],
+      "description": "الطعام"
+    },
+    {
+      "intent": "النوم",
+      "examples": [
+        {
+          "text": "احصل حوالي اربع او خمس ساعات فقط"
+        },
+        {
+          "text": "لدي بعض الالتزامات"
+        },
+        {
+          "text": "لدي بعض الدراسة"
+        },
+        {
+          "text": "لدي بعض العمل"
+        },
+        {
+          "text": "ليس كثيرا"
+        },
+        {
+          "text": "نعم انام كثيرا"
+        }
+      ],
+      "description": "النوم"
+    },
+    {
+      "intent": "انام_كثيرا",
+      "examples": [
+        {
+          "text": "نعم انام كثيرا"
+        }
+      ],
+      "description": "نعم  انام  كثيرا"
+    },
+    {
+      "intent": "رياضة_نوم",
+      "examples": [
+        {
+          "text": "لا امارس الرياضة ابدا"
+        }
+      ],
+      "description": "لا امارس الرياضة ابدا"
+    },
+    {
+      "intent": "قلق",
+      "examples": [
+        {
+          "text": "اخاف من خذلان والدي"
+        },
+        {
+          "text": "نعم هناك قلق بسبب الدراسة"
+        },
+        {
+          "text": "نعم هناك قلق بسبب المدرسة"
+        }
+      ],
+      "description": "قلق"
+    },
+    {
+      "intent": "مرحبا",
+      "examples": [
+        {
+          "text": "مرحبا"
+        }
+      ],
+      "description": "مرحبا"
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "الطعام",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "الأصدقاء تساعدنا كثيرا عندما نشعر بالضيق"
+              },
+              {
+                "text": "ماذا عن علاقتك بأصدقائك هل هي جيدة؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#الطعام",
+      "dialog_node": "node_10_1600420269372",
+      "previous_sibling": "node_10_1600422279652"
+    },
+    {
+      "type": "standard",
+      "title": "رياضة_نوم",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هل تأكل الكثير من الوجبات السريعة في الفترة الاخيرة؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#رياضة_نوم",
+      "dialog_node": "node_10_1600422279652",
+      "previous_sibling": "node_4_1600419981675"
+    },
+    {
+      "type": "standard",
+      "title": "اضطراب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لماذا لا تأخذ استراحة سأحاول تهدئتك قليلاً أعرف بعض الطرق لتخفيف التوتر "
+              },
+              {
+                "text": "هل تريد أن نبدأ الان"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#اضطراب",
+      "dialog_node": "node_1_1600418246184",
+      "previous_sibling": "node_7_1600417869682"
+    },
+    {
+      "type": "standard",
+      "title": "الاصدقاء",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هل هناك شيء يقلقك ؟ "
+              },
+              {
+                "text": "شيء يشتت تفكريرك ويقلل من تركيزك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#الاصدقاء",
+      "dialog_node": "node_1_1600420620473",
+      "previous_sibling": "node_10_1600420269372"
+    },
+    {
+      "type": "standard",
+      "title": "نعم  انام  كثيرا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ".هذا رائع"
+              },
+              {
+                "text": "ماذا عن تمارين الرياضة هل تمارس الرياضة ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#انام_كثيرا",
+      "dialog_node": "node_2_1600421618121",
+      "previous_sibling": "node_7_1600418830494"
+    },
+    {
+      "type": "standard",
+      "title": "اريد",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هل تعتقد أنك تحصل على قسط كاف من النوم في الليل ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#اريد",
+      "dialog_node": "node_4_1600418552614",
+      "previous_sibling": "node_1_1600418246184"
+    },
+    {
+      "type": "standard",
+      "title": "الرياضة",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "أراهن أنك تأكل الكثير من الوجبات السريعة أيضا أليس كذلك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#الرياضة",
+      "dialog_node": "node_4_1600419981675",
+      "previous_sibling": "node_2_1600421618121"
+    },
+    {
+      "type": "standard",
+      "title": "لا يمكنني فعل شيء",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "يبدو أنه لديك بعض الأشياء تحدث هل لديك أي اضطرابات ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#cannot",
+      "dialog_node": "node_7_1600417869682",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "standard",
+      "title": "النوم",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ماذا عن تمارين الرياضة هل تمارس الرياضة ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#النوم",
+      "dialog_node": "node_7_1600418830494",
+      "previous_sibling": "node_4_1600418552614"
+    },
+    {
+      "type": "standard",
+      "title": "قلق",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ".يبدو الأمر و كأنه حلقة مفرغة ومانحتاج إليه هو كسر تلك الحلقة حتى نتمكن من البدء في التركيز والتخلص من القلق"
+              },
+              {
+                "text": "مافعلته حاليا يسمى فحص الوعي واكتشفت أنك لا تحصل على قسط كاف من النوم وأن عادتك الغذائية بحاجة إلى تغيير "
+              },
+              {
+                "text": "أنت بحاجة إلى مزيد من التمرين لمنع جسمك من الإرهاق وتحتاج إلى البقاء على اتصال بأصدقائك الذين يدعموك و يبقوك في حالة ذهنية إيجابية ."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#قلق",
+      "dialog_node": "node_8_1600420956619",
+      "previous_sibling": "node_1_1600420620473"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_8_1600420956619",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#مرحبا",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "myskill",
+  "language": "ar",
+  "description": ""
+}

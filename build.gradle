@@ -20,6 +20,9 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
+        maven {
+            url  "https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo"
+        }
         
     }
 }
