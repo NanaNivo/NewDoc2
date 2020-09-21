@@ -176,7 +176,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
         mLevel++;
         BALLOONS_PER_Round++;
         updateDisplay();
-        Toast.makeText(this,"round"+BALLOONS_PER_Round, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this,"round"+BALLOONS_PER_Round, Toast.LENGTH_SHORT).show();
         BalloonLauncher balloonLauncher = new BalloonLauncher();
         balloonLauncher.execute(mLevel);
         mPlaying = true;
@@ -206,7 +206,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 }
             });
             // Toast.makeText(this, String.format("You finished level %d", mLevel), Toast.LENGTH_SHORT).show();
-           // startLevel();
+            // startLevel();
         }
         else
         {
@@ -244,25 +244,25 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
 
     int carrntcreatballon;
-   /* float widh,high,highjumb;
-    String curpath;
-    int balform;*/
+    /* float widh,high,highjumb;
+     String curpath;
+     int balform;*/
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void jumpBalloon(Balloon balloon, boolean userTouch) {
-    final float widh,high,highjumb;
-    final String curpath;
-    final int balform;
-         widh=  balloon.getX()-mScreenWidth;
-         high=  balloon.getY();
-         float tranX=balloon.getTranslationX();
+        final float widh,high,highjumb;
+        final String curpath;
+        final int balform;
+        widh=  balloon.getX()-mScreenWidth;
+        high=  balloon.getY();
+        float tranX=balloon.getTranslationX();
         curpath=balloon.curpath;
-         balform=balloon.ballonform;
-       String typword1=balloon.typeword;
+        balform=balloon.ballonform;
+        String typword1=balloon.typeword;
         db.iswordclick(balloon.curword);
         appearwords.remove(balloon.curword);
-        Toast.makeText(this, "appearwords"+appearwords.size(), Toast.LENGTH_LONG).show();
-         highjumb = high+balloon.curunthigh;
+      //  Toast.makeText(this, "appearwords"+appearwords.size(), Toast.LENGTH_LONG).show();
+        highjumb = high+balloon.curunthigh;
         if ((highjumb > 0) && (highjumb < mScreenHeight-400)) {
             popBalloon(balloon, true);
 
@@ -282,44 +282,44 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
             }
 
             //time to finish bb moving
-                new CountDownTimer(1000, 1000) {
+            new CountDownTimer(1000, 1000) {
 
-                    public void onTick(long millisUntilFinished) {
-                        // mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-                    }
+                public void onTick(long millisUntilFinished) {
+                    // mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                }
 
-                    public void onFinish() {
+                public void onFinish() {
 
-                        // timer=true;
-                        // Toast.makeText(this, balloon.getX()+"+"+balloon.getY()+"old", Toast.LENGTH_LONG).show();
-                        if (!db.isclickallword())
-                        {
-                            while (currword.size() == 0) {
+                    // timer=true;
+                    // Toast.makeText(this, balloon.getX()+"+"+balloon.getY()+"old", Toast.LENGTH_LONG).show();
+                    if (!db.isclickallword())
+                    {
+                        while (currword.size() == 0) {
 
-                                currword = db.getinfoFroairship(mNextword);
-
-
-                            }
-
-                            appearwords.add(currword.get(0));
-                            Balloon bb = launchBalloon(widh, highjumb, currword.get(0), currword.get(1), balform, curpath, false);
-                            currword = new ArrayList<>();
-                            // Toast.makeText(this, balloon.curunthigh+"curunthigh"+balloon.getX(), Toast.LENGTH_LONG).show();
+                            currword = db.getinfoFroairship(mNextword);
 
 
                         }
-                        else
-                        {
-                            Toast.makeText(getBaseContext(), "finished word", Toast.LENGTH_LONG).show();
-                            if(appearwords.isEmpty())
-                            {
-                                gameend();
-                            }
-                        }
+
+                        appearwords.add(currword.get(0));
+                        Balloon bb = launchBalloon(widh, highjumb, currword.get(0), currword.get(1), balform, curpath, false);
+                        currword = new ArrayList<>();
+                        // Toast.makeText(this, balloon.curunthigh+"curunthigh"+balloon.getX(), Toast.LENGTH_LONG).show();
+
 
                     }
+                    else
+                    {
+                        Toast.makeText(getBaseContext(), "finished word", Toast.LENGTH_LONG).show();
+                        if(appearwords.isEmpty())
+                        {
+                            gameend();
+                        }
+                    }
 
-                }.start();
+                }
+
+            }.start();
 
 
 
@@ -349,7 +349,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
             }
 
             int d= BALLOONS_PER_Round+carrntcreatballon;
-            Toast.makeText(this, "ok"+d, Toast.LENGTH_LONG).show();
+         //   Toast.makeText(this, "ok"+d, Toast.LENGTH_LONG).show();
 
             if (d<BALLOONS_PER_LEVEL) {
                 carrntcreatballon++;
@@ -396,7 +396,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
 
     private void gameend() {
         mSoundHelper.pauseMusic();
-        Toast.makeText(this, "end the game", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "end the game", Toast.LENGTH_SHORT).show();
 
         for (Balloon balloon : mBalloons) {
             mContentView.removeView(balloon);
@@ -436,7 +436,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
                 }
             });
         }
-        }
+    }
 
 
 
@@ -450,7 +450,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
     @Override
     protected void onStop() {
         super.onStop();
-     //  gameend();
+        //  gameend();
     }
     public  boolean comblate=false;
 
@@ -484,7 +484,7 @@ public class airshipActivity extends AppCompatActivity implements Balloon.Balloo
             //mBalloons.get(i).stopAnimation();
         }
         mSoundHelper.pauseMusic();
-        Toast.makeText(this, "close the game", Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(this, "close the game", Toast.LENGTH_SHORT).show();
 
 
 

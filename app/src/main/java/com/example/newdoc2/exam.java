@@ -38,7 +38,7 @@ public class exam extends AppCompatActivity {
         the_result_of_anxiety=getSharedPreferences("PREFERENCEExam2", MODE_PRIVATE).getString("Exam2", null);
         the_result_of_depression=getSharedPreferences("PREFERENCEExam3", MODE_PRIVATE).getString("Exam3", null);
 
-        Toast.makeText(this,"the_result_of_stress"+the_result_of_stress,Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this,"the_result_of_stress"+the_result_of_stress,Toast.LENGTH_LONG).show();
 
 
 

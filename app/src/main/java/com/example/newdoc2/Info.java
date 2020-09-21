@@ -60,8 +60,8 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
                     numqQues++;
                     temp = null;
                     groupInfo.removeAllViews();
-                    if (numqQues < 8) {
-                        Toast.makeText(Info.this, "ccc" + numqQues, Toast.LENGTH_SHORT).show();
+                    if (numqQues < 10) {
+                     //   Toast.makeText(Info.this, "ccc" + numqQues, Toast.LENGTH_SHORT).show();
                         temp = db.getQuesFroInfo(numqQues);
                         // db.insertData("وجدت صعوبة في الهدوء و الراحة",2);
 
@@ -70,7 +70,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener {
                         addRadioButtons(Integer.parseInt(number));
                     }
 
-                    if (numqQues == 8) {
+                    if (numqQues == 10) {
                         quesInfo.setText(null);
                         //for inter as once first
                         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", true).commit();

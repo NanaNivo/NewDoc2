@@ -127,7 +127,7 @@ public class pdfActivity extends AppCompatActivity {
 
             }
             SAMPLE_FILE=showPdf[selectedItemId];
-            Toast.makeText(getBaseContext(),"nnnn"+selectedName,Toast.LENGTH_LONG).show();
+          //  Toast.makeText(getBaseContext(),"nnnn"+selectedName,Toast.LENGTH_LONG).show();
             db.updateshowTopdf(selectedName);
             Intent intent = new Intent(getApplicationContext(), PdfShowActivity.class);
             startActivity(intent);

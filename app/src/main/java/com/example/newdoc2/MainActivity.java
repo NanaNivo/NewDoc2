@@ -59,32 +59,32 @@ isclicable2=false;
             selectedSuperStar = ans2.getText().toString();
             verAswer = 1;
             isclicable2=true;
-            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+         //   Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
           } else if (ans1.isChecked()) {
             selectedSuperStar = ans1.getText().toString();
             verAswer = 0;
             isclicable2=true;
-            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+        //    Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
 
           } else if (ans4.isChecked()) {
             selectedSuperStar = ans4.getText().toString();
             verAswer = 3;
             isclicable2=true;
-            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+        //    Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
           } else if (ans3.isChecked()) {
             selectedSuperStar = ans3.getText().toString();
             verAswer = 2;
             isclicable2=true;
-            Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
+       //     Toast.makeText(getApplicationContext(),isclicable2+"isclick", Toast.LENGTH_LONG).show();
           }
         if (isclicable2) {
-            Toast.makeText(getApplicationContext(), selectedSuperStar, Toast.LENGTH_LONG).show();
+       //     Toast.makeText(getApplicationContext(), selectedSuperStar, Toast.LENGTH_LONG).show();
           db.updateAns(numQues, verAswer);
           //selectedPosition=-1;
           if (numQues == 21) {
             result = db.getthesum();
             String[] all = db.resultdiagnosis(result);
-            Toast.makeText(getApplicationContext(), "the result of stress" + all[0] + ",,the result of anxiety,,," + all[1] + "the result of depression" + all[2], Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), "the result of stress" + all[0] + ",,the result of anxiety,,," + all[1] + "the result of depression" + all[2], Toast.LENGTH_LONG).show();
             getSharedPreferences("PREFERENCEExam1", MODE_PRIVATE).edit().putString("Exam1", all[0]).commit();
             getSharedPreferences("PREFERENCEExam2", MODE_PRIVATE).edit().putString("Exam2", all[1]).commit();
             getSharedPreferences("PREFERENCEExam3", MODE_PRIVATE).edit().putString("Exam3", all[2]).commit();

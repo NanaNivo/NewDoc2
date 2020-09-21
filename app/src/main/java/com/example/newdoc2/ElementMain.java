@@ -158,7 +158,7 @@ public LinearLayout space_header;
         header_top.getLayoutParams().height=highFirst/2;
         space_header=findViewById(R.id.space_to_header);
         space_header.setLayoutParams(new LinearLayout.LayoutParams(widthFirst, highFirst/4));
-        Toast.makeText(getApplication(),"wwww"+header_top.getHeight(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplication(),"wwww"+header_top.getHeight(),Toast.LENGTH_LONG).show();
 
 
         cack=(ImageView) findViewById(R.id.cake);
@@ -212,7 +212,7 @@ public LinearLayout space_header;
 
 
 // add code here what you need on click of items.
-                Toast.makeText(getApplicationContext(), "menuItem" + menuItem, Toast.LENGTH_LONG).show();
+            //    Toast.makeText(getApplicationContext(), "menuItem" + menuItem, Toast.LENGTH_LONG).show();
 
                 int itemId = menuItem.getItemId();
 
@@ -253,13 +253,13 @@ public LinearLayout space_header;
 
 
        list =db.getinfoFroVed();
-        Toast.makeText(this,"ccccccc"+list.size(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(this,"ccccccc"+list.size(),Toast.LENGTH_LONG).show();
        for(int i=0;i<list.size();i++)
        {
            if(list.get(i).show.equals("true"))
            {
              levelShowVedio++;
-             Toast.makeText(this,"xxxxx"+list.get(i).show,Toast.LENGTH_LONG).show();
+           //  Toast.makeText(this,"xxxxx"+list.get(i).show,Toast.LENGTH_LONG).show();
            }
 
        }
